@@ -1,0 +1,25 @@
+import pandas as pd
+
+dataFrame = pd.read_csv(r"C:\Users\22lor\OneDrive\Desktop\CI102ProjectCode\database.csv")
+
+def cleanDataFrame(dataFrame):
+    dataFrame = dataFrame.dropna()
+    return dataFrame
+
+def sortByPrice(dataFrame, userChoice):
+    sortedDataFrame = dataFrame.sort_values(by="Price", ascending=userChoice)
+    print(sortedDataFrame)
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    try:
+        userInput = input("Press 1 to sort by ascending order. Press 2 to sort by descending order. ")
+        dataFrame = cleanDataFrame(dataFrame)
+        if userInput == "1":
+            sortByPrice(dataFrame, True)
+        elif userInput == "2":
+            sortByPrice(dataFrame, False)
+    except:
+        print("Error.")
+
+
+
