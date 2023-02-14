@@ -1,6 +1,6 @@
 import pandas as pd
 
-dataFrame = pd.read_csv(r"C:\Users\22lor\OneDrive\Desktop\CI102ProjectCode\database.csv")
+dataFramePath = pd.read_csv(r"C:\Users\22lor\OneDrive\Desktop\CI102ProjectCode\database.csv")
 
 def cleanDataFrame(dataFrame):
     dataFrame = dataFrame.dropna()
@@ -9,17 +9,27 @@ def cleanDataFrame(dataFrame):
 def sortByPrice(dataFrame, userChoice):
     sortedDataFrame = dataFrame.sort_values(by="Price", ascending=userChoice)
     print(sortedDataFrame)
-# Press the green button in the gutter to run the script.
+
+def sortByRange(dataFrame, start, end):
+    start = float(start)
+    end = float(end)
+    userRangeDataFrame = dataFrame[(dataFrame["Price"] >= start) & (dataFrame["Price"] <= end)]
+    print(userRangeDataFrame)
+
 if __name__ == '__main__':
+    dataFrame = cleanDataFrame(dataFramePath)
     try:
-        userInput = input("Press 1 to sort by ascending order. Press 2 to sort by descending order. ")
+        userInput = input("Press 1 to sort by ascending order. Press 2 to sort by descending order. Press 3 to enter a range of prices")
         dataFrame = cleanDataFrame(dataFrame)
         if userInput == "1":
             sortByPrice(dataFrame, True)
         elif userInput == "2":
             sortByPrice(dataFrame, False)
+        elif userInput == "3":
+            userRangeStart = input("Enter the starting price")
+            userRangeEnd = input("Enter the ending price")
+            sortByRange(dataFrame, userRangeStart, userRangeEnd)
     except:
         print("Error.")
-
 
 
