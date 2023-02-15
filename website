@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drexel Computer Reccomender</title>
+    <link rel="icon" type="image/x-icon" href="img/AugCat.ico">
+    
+</head>
+  <body style="background-image: url(''); overflow-x:hidden; overflow-y:shown;">
+
+    <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFFFF;">
+      <img src="img/DrexelTopper.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
+      <p style="font-size:120px; margin-top:-30px;"><font color=#000066>Computer Reccomender</font></p>
+    </div>
+    
+    <div id="Main" style="width:99.4%; height:150px; margin:auto; border:4px ridge #000066; background-image:url('img/YellowPicnic400x.png'); margin-top: 80px;">
+      <p style="font-size:30px; margin-top:auto;"><font color=#000066>Please ask your question here!</font></p>
+      
+      <form action="p">
+        <label for="fname"></label>
+        <input type="text" id="fname" name="fname"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+      
+    </div>
+    
+    <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('img/YellowPicnic400x.png'); margin-top: 80px;">
+    
+       <p style="font-size:30px; margin-top:auto;"><font color=#000066><!-- output goes here--></font></p>
+      
+    </div>
+    
+  </body>
