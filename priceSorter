@@ -1,6 +1,7 @@
 import pandas as pd
 
-dataFramePath = pd.read_csv(r"C:\Users\22lor\OneDrive\Desktop\CI102ProjectCode\database.csv")
+#dataFramePath = pd.read_csv(r"C:\Users\22lor\OneDrive\Desktop\CI102ProjectCode\database.csv")
+dataFramePath = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
 
 def cleanDataFrame(dataFrame):
     dataFrame = dataFrame.dropna()
@@ -8,28 +9,67 @@ def cleanDataFrame(dataFrame):
 
 def sortByPrice(dataFrame, userChoice):
     sortedDataFrame = dataFrame.sort_values(by="Price", ascending=userChoice)
-    print(sortedDataFrame)
+    return sortedDataFrame
 
-def sortByRange(dataFrame, start, end):
+def sortByRange(dataFrame, start, end, ascending):
     start = float(start)
     end = float(end)
     userRangeDataFrame = dataFrame[(dataFrame["Price"] >= start) & (dataFrame["Price"] <= end)]
-    print(userRangeDataFrame)
+    userRangeDataFrame = sortByPrice(userRangeDataFrame, ascending)
+    return userRangeDataFrame
+
+def sortByType(dataFrame, productType):
+    dataFrame = dataFrame[(dataFrame["Product Type"]) == productType]
+    return dataFrame
 
 if __name__ == '__main__':
     dataFrame = cleanDataFrame(dataFramePath)
-    try:
-        userInput = input("Press 1 to sort by ascending order. Press 2 to sort by descending order. Press 3 to enter a range of prices")
-        dataFrame = cleanDataFrame(dataFrame)
-        if userInput == "1":
-            sortByPrice(dataFrame, True)
-        elif userInput == "2":
-            sortByPrice(dataFrame, False)
-        elif userInput == "3":
+    print(dataFrame.columns.tolist())
+    print("fasdfads")
+    userInput = input("Press 1 to sort by ascending order (whole database). "
+                      "Press 2 to sort by descending order (whole database). Press 3 to enter a range of prices. Press 4 to look at a specific product type."
+                      "Press 5 for recommendation.")
+    dataFrame = cleanDataFrame(dataFrame)
+    if userInput == "1":
+        sortedDataFrame = sortByPrice(dataFrame, True)
+        print(sortedDataFrame)
+    elif userInput == "2":
+        sortedDataFrame = sortByPrice(dataFrame, False)
+        print(sortedDataFrame)
+    elif userInput == "3":
+        userRangeStart = input("Enter the starting price")
+        userRangeEnd = input("Enter the ending price")
+        userInput2 = input("Press 1 to sort by ascending order. Press 2 to sort by descending order")
+        if userInput2 == "1":
+            print(sortByRange(dataFrame, userRangeStart, userRangeEnd, True))
+        elif userInput2 == "2":
+            print(sortByRange(dataFrame, userRangeStart, userRangeEnd, False))
+    elif userInput == "4":
+        userInput2 = input("Press 1 for notebooks. Press 2 for writing tools. Press 3 for tech.")
+        if userInput2 == "1":
+            print(sortByType(dataFrame, "Notebook"))
+        elif userInput2 == "2":
+            print(sortByType(dataFrame, "Writing Tools"))
+        elif userInput2 == "3":
+            #asdf
             userRangeStart = input("Enter the starting price")
             userRangeEnd = input("Enter the ending price")
-            sortByRange(dataFrame, userRangeStart, userRangeEnd)
-    except:
-        print("Error.")
+            userInput3 = input("Press 1 to sort by ascending order. Press 2 to sort by descending order")
+            specificDataFrame = sortByType(dataFrame, "Tech")
+            #print(specificDataFrame)
+            if userInput3 == "1":
+                specificDataFrame = sortByRange(specificDataFrame, userRangeStart, userRangeEnd, True)
+                print(specificDataFrame)
+            elif userInput3 == "2":
+                specificDataFrame = sortByRange(specificDataFrame, userRangeStart, userRangeEnd, False)
+                print(specificDataFrame.to_string())
+
+    elif userInput == "5":
+        userInput2 = input("Are you looking for a gaming laptop? Press 1 for yes. Press 2 for no.")
+        if userInput2 == "1":
+            print("Check this out:")
+        else:
+            print()
+
 
 
