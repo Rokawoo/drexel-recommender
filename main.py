@@ -1,78 +1,32 @@
+from flask import Flask, render_template, request
 import pandas as pd
 
+df = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
+app = Flask(__name__)
 
-#dataFramePath = pd.read_csv(r"C:\Users\22lor\OneDrive\Desktop\CI102ProjectCode\database.csv")
-dataFramePath = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
+rows = len(df.axes[0])
+n = 0
 
+top1 = df.head(1)
+@app.route("/")
+@app.route("/home")
+def home():
+    return render_template("home.html")
 
+@app.route("/sortPage")
+def sortPage():
+    return render_template("sortPage.html")
 
-def cleanDataFrame(dataFrame):
-    dataFrame = dataFrame.dropna()
-    return dataFrame
+@app.route("/result", methods = ["POST", "GET"])
+def result():
+    output = request.form.to_dict()
+    name = output["name"]
+    if name.lower() == "writing tools":
+        newDF = df[(df["Product Type"]) == "Writing Tools"]
+        name = str(newDF.head())
+    else:
+        name = "not sort"
 
-def sortByPrice(dataFrame, userChoice):
-    sortedDataFrame = dataFrame.sort_values(by="Price", ascending=userChoice)
-    return sortedDataFrame
-
-def sortByRange(dataFrame, start, end, ascending):
-    start = float(start)
-    end = float(end)
-    userRangeDataFrame = dataFrame[(dataFrame["Price"] >= start) & (dataFrame["Price"] <= end)]
-    userRangeDataFrame = sortByPrice(userRangeDataFrame, ascending)
-    return userRangeDataFrame
-
-def sortByType(dataFrame, productType):
-    dataFrame = dataFrame[(dataFrame["Product Type"]) == productType]
-    return dataFrame
-
-if __name__ == '__main__':
-    dataFrame = cleanDataFrame(dataFramePath)
-    print(dataFrame.columns.tolist())
-    print("fasdfads")
-    userInput = input("Press 1 to sort by ascending order (whole database). "
-                      "Press 2 to sort by descending order (whole database). Press 3 to enter a range of prices. Press 4 to look at a specific product type."
-                      "Press 5 for recommendation.")
-    dataFrame = cleanDataFrame(dataFrame)
-    if userInput == "1":
-        sortedDataFrame = sortByPrice(dataFrame, True)
-        print(sortedDataFrame)
-    elif userInput == "2":
-        sortedDataFrame = sortByPrice(dataFrame, False)
-        print(sortedDataFrame)
-    elif userInput == "3":
-        userRangeStart = input("Enter the starting price")
-        userRangeEnd = input("Enter the ending price")
-        userInput2 = input("Press 1 to sort by ascending order. Press 2 to sort by descending order")
-        if userInput2 == "1":
-            print(sortByRange(dataFrame, userRangeStart, userRangeEnd, True))
-        elif userInput2 == "2":
-            print(sortByRange(dataFrame, userRangeStart, userRangeEnd, False))
-    elif userInput == "4":
-        userInput2 = input("Press 1 for notebooks. Press 2 for writing tools. Press 3 for tech.")
-        if userInput2 == "1":
-            print(sortByType(dataFrame, "Notebook"))
-        elif userInput2 == "2":
-            print(sortByType(dataFrame, "Writing Tools"))
-        elif userInput2 == "3":
-            #asdf
-            userRangeStart = input("Enter the starting price")
-            userRangeEnd = input("Enter the ending price")
-            userInput3 = input("Press 1 to sort by ascending order. Press 2 to sort by descending order")
-            specificDataFrame = sortByType(dataFrame, "Tech")
-            #print(specificDataFrame)
-            if userInput3 == "1":
-                specificDataFrame = sortByRange(specificDataFrame, userRangeStart, userRangeEnd, True)
-                print(specificDataFrame)
-            elif userInput3 == "2":
-                specificDataFrame = sortByRange(specificDataFrame, userRangeStart, userRangeEnd, False)
-                print(specificDataFrame.to_string())
-
-    elif userInput == "5":
-        userInput2 = input("Are you looking for a gaming laptop? Press 1 for yes. Press 2 for no.")
-        if userInput2 == "1":
-            print("Check this out:")
-        else:
-            print()
-
-
-
+    return render_template("sortPage.html", name = name)
+if __name__ == "__main__":
+    app.run(debug=True)
