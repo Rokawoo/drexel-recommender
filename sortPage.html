@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> Sort Page </h1>
+    <form class = "grid" action = "/result" method = "POST">
+        <label for = "Name"> Button </label>
+        <input type="text" name="name" id ="name">
+        <input type="Submit" class = "file_submit">
+        <center>
+            {% if name %}
+            <h3 style = "color: black;">
+                <table>
+                    <tr>
+                        <p> Item 1 </p>
+                        {{name}}
+                    </tr>
+                    <tr>
+                        <p>
+                            Item 2
+                        </p>
+                        {{name2}}
+                    </tr>
+                    <tr>
+                        <p>
+                            Item 3
+                        </p>
+                        {{name3}}
+                    </tr>
+                </table>
+            </h3>
+            {% endif %}
+        </center>
+    </form>
+    <form action="/goBackHome" method="POST">
+        <button> Go Back Home </button>
+    </form>
+    <form action="/logout" method="POST">
+        <button> Logout (Refresh Data) </button>
+    </form>
+</body>
+</html>
