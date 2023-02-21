@@ -25,16 +25,13 @@ def result():
     output = request.form.to_dict()
     name = output["name"]
     if name.lower() == "writing tools":
-        if "number" in session:
-            #n = session.get["n", None]
-            newDF = df[(df["Product Type"]) == "Writing Tools"]
-            newDF = newDF.drop(["WebLinks"], axis=1)
-            name = str(newDF.loc[n])
-            name2 = str(newDF.loc[n + 1])
-            name3 = str(newDF.loc[n + 2])
-            session["a"] = session["a"] + 1
-        else:
-            return render_template("home.html")
+        #n = session.get["n", None]
+        newDF = df[(df["Product Type"]) == "Writing Tools"]
+        newDF = newDF.drop(["WebLinks"], axis=1)
+        name = str(newDF.loc[n])
+        name2 = str(newDF.loc[n + 1])
+        name3 = str(newDF.loc[n + 2])
+        session["a"] = session["a"] + 1
     else:
         name = "Invalid"
     print(n)
