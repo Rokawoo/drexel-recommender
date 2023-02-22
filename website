@@ -6,6 +6,10 @@
     <link rel="icon" type="image/x-icon" href="img/DrexelIcon.ico">
     
     <style>
+      body {
+       background-size: cover;
+      } 
+    
       input[type=text] {
         color: #000066;
         width: 99.5%;
