@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drexel Reccomender</title>
+    <link rel="icon" type="image/x-icon" href="img/DrexelIcon.ico">
+    <style>
+      body {
+       background-size: cover;
+      } 
+    
+      button {
+        background-color: #000066;
+        color: white;
+        height:48px; 
+        width:300px; 
+        position:relative;
+        margin: 10px 2px;
+        left:17.5%;
+        font-size:35px
+      }
+    </style>
+</head>
+  <body style="background-image: url('img/whiteVector.png'); overflow-x:hidden; overflow-y:shown;">
+     <div style="max-width: 1207px; margin: auto"> 
+     
+      <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFF00;">
+        <img src="img/DrexelTopper.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
+        <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Drexel Recc&nbsp;&nbsp;mender</font></p>
+        <img src="img/star2.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 350px; margin-top:-215px; float:right;">
+      </div>
+      
+      <div id="Main" style="width: 473.144px; height:600px; margin:auto; margin-top: 100px; border:4px ridge #000066; background-image:url('img/YellowPicnic400x.png');">
+        <h1 style="font-size:40px; margin-top:auto; margin-left: 59px; text-align: center; font-family: arial;"><font color=#000066>FUNCTIONS</font></h1>
+        <button onclick="window.location.href='https://rokawoo.neocities.org/CI102/sortPage';">Price Sorter</button>
+        <button onclick="window.location.href='';">Reccomender</button>
+        <button onclick="window.location.href='';">Random Product</button>
+      </div>
+      
+      <div id="Description" style="width: 250px; height: 203px; margin-left: 90px; margin-top: -608px; border:4px ridge #000066; background-image:url('img/WhitePicnic400x.png');">
+      <p style="font-family:arial; font-size: 25px; color: black; text-align: center; margin-top:auto; padding-left: 2px; padding-right: 2px">
+      <font color=#000066>Drexel Reccomender</font> is a web tool used to sort or reccomend products from the <a style="color: #000066" href="https://drexel.bncollege.com/">Drexel Webstore</a> based on the user's desired needs.
+      </p>
+      </div>
+      
+    </div>
+  </body>
