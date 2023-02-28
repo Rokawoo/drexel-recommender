@@ -15,6 +15,8 @@ def home():
     session["a"] = a
     b = 0
     session["b"] = b
+    c = "Writing Tools"
+    session["Category"] = c
     return render_template("home.html")
 
 @app.route("/sortPage") #searchPage
@@ -79,10 +81,20 @@ def writingToolsOutput():
                            price3 = price3, price4 = price4, price5 = price5, price6 = price6,
                            price7 = price7, price8 = price8, price9 = price9, price10 = price10)
 '''
+
+#Create button that goes to another page with a input search box. When submitting, returns to that same page but an updated session page.
+#add the upper range into search, then upon submission, return back to the search page, but with two updated sesion pages that will then be taken in with
+#the range of the table/information
 @app.route("/subtractCounter", methods = ["POST"])
 def subtractCounter():
     n = session.get("a")
     newDF = df[(df["Product Type"]) == "Writing Tools"]
+    if session["Category"] == "Tech":
+        newDF = df[(df["Product Type"]) == "Tech"]
+    elif session["Category"] == "Art Supplies":
+        newDF = df[(df["Product Type"]) == "Art Supplies"]
+    elif session["Category"] == "Writing Tools":
+        pass
     sortedList = []
     if session["b"] == 1:
         newDF = newDF.sort_values(by="Price", ascending=True)
@@ -193,6 +205,12 @@ def subtractCounter():
 def addCounter():
     n = session.get("a")
     newDF = df[(df["Product Type"]) == "Writing Tools"]
+    if session["Category"] == "Tech":
+        newDF = df[(df["Product Type"]) == "Tech"]
+    elif session["Category"] == "Art Supplies":
+        newDF = df[(df["Product Type"]) == "Art Supplies"]
+    elif session["Category"] == "Writing Tools":
+        pass
     sortedList = []
     if session["b"] == 1:
         newDF = newDF.sort_values(by="Price", ascending=True)
@@ -331,6 +349,22 @@ def logout():
 @app.route("/goBackWritingToolsPage", methods = ["POST"])
 def goBackWritingToolsPage():
     return render_template("writingToolsPage.html")
+
+@app.route("/changeToTech", methods = ["POST"])
+def changeToTech():
+    session["Category"] = "Tech"
+    return render_template("writingToolsPage.html")
+
+@app.route("/changeToArtSupplies", methods = ["POST"])
+def changeToArtSupplies():
+    session["Category"] = "Art Supplies"
+    return render_template("writingToolsPage.html")
+
+@app.route("/changeToWritingTools", methods = ["POST"])
+def changeToWritingTools():
+    session["Category"] = "Writing Tools"
+    return render_template("writingToolsPage.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
