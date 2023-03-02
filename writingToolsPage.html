@@ -29,6 +29,9 @@
     <form action="/addCounter" method="POST">
         <button> Add Counter</button>
     </form>
+    <form action="/subtractCounter" method="POST">
+        <button> Subtract Counter </button>
+    </form>
     <form action="/priceRange" method="POST">
         <label> Upper Bound </label> <br>
         <input type="text" name="upperBound"> <br>
@@ -37,10 +40,11 @@
         <input type="submit" value="submit">
     </form>
     <table>
-        <th> Name </th>
-        <th> Price </th>
-        <th> Weblinks </th>
-        {% for (name, price, link) in everything %}
+        <th> {{nameTitle}} </th>
+        <th> {{priceTitle}} </th>
+        <th> {{linkTitle}} </th>
+
+        {% for (name, price, link) in everything %} <!-- Make the table headers into variables -->
         <tr>
             <td> {{name}} </td>
             <td> {{price}} </td>
