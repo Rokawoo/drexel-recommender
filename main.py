@@ -19,6 +19,10 @@ def home():
     session["ascending"] = ascending
     category = "Writing Tools"
     session["Category"] = category
+
+    session["upperBound"] = 5000.0
+    session["lowerBound"] = 0.0
+
     return render_template("home.html")
 
 @app.route("/sortPage") #searchPage
@@ -31,37 +35,266 @@ def goBackHome():
 
 @app.route("/goBackWritingToolsPage", methods = ["POST"])
 def goBackWritingToolsPage():
-    defaultDFList = df
+    defaultDF = df
     if session["ascending"] == True:
-        defaultDFList = ascendingDF
+        defaultDF = ascendingDF
     elif session["ascending"] == False:
-        defaultDFList = descendingDF
+        defaultDF = descendingDF
 
-    nameDF = defaultDFList.loc[:, "Name"]
-    priceDF = defaultDFList.loc[:, "Price"]
-    linkDF = defaultDFList.loc[:, "WebLinks"]
+    defaultDF = defaultDF[(defaultDF["Price"] >= session["lowerBound"]) & (defaultDF["Price"] <= session["upperBound"])]
+
+    nameDF = defaultDF.loc[:, "Name"]
+    priceDF = defaultDF.loc[:, "Price"]
+    linkDF = defaultDF.loc[:, "WebLinks"]
 
     nameList = nameDF.head(10).values.tolist()
     priceList = priceDF.head(10).values.tolist()
     linkList = linkDF.head(10).values.tolist()
 
     everything = zip(nameList, priceList, linkList)
-    return render_template("writingToolsPage.html", everything = everything)
+    nameTitle = "Name"
+    priceTitle = "Price"
+    linkTitle = "Link"
+    return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                           link=linkTitle)
 
 @app.route("/addCounter", methods = ["POST"])
 def addCounter():
-    n = session["counter"]
+    session["counter"] += 1
+    defaultDF = df
+    if session["ascending"] == True:
+        defaultDF = ascendingDF
+    elif session["ascending"] == False:
+        defaultDF = descendingDF
+
+    defaultDF = defaultDF[(defaultDF["Price"] >= session["lowerBound"]) & (defaultDF["Price"] <= session["upperBound"])]
+
     if session["Category"] == "Tech":
-        techDF = df[(df["Product Type"]) == "Tech"] #do the price thing here
+        techDF = defaultDF[(defaultDF["Product Type"]) == "Tech"] #do the price thing here
         nameDF = techDF.loc[:, "Name"]
         priceDF = techDF.loc[:, "Price"]
         linkDF = techDF.loc[:, "WebLinks"]
 
-        return render_template("writingToolsPage.html")
+        nameList = nameDF.values.tolist()
+        priceList = priceDF.values.tolist()
+        linkList = linkDF.values.tolist()
+
+        limit = len(nameList)
+        upper = 10 + session["counter"]
+        lower = 0 + session["counter"]
+        if limit == upper:
+            upper = limit
+
+        if len(nameList) <= 10:
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+        elif len(nameList) > 10:
+
+            nameList = nameList[lower:upper]
+            priceList = priceList[lower:upper]
+            linkList = linkList[lower:upper]
+
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+
     elif session["Category"] == "Writing Tools":
-        return render_template("writingToolsPage.html")
+        writingDF = defaultDF[(defaultDF["Product Type"]) == "Writing Tools"]
+        nameDF = writingDF.loc[:, "Name"]
+        priceDF = writingDF.loc[:, "Price"]
+        linkDF = writingDF.loc[:, "WebLinks"]
+
+        nameList = nameDF.values.tolist()
+        priceList = priceDF.values.tolist()
+        linkList = linkDF.values.tolist()
+
+        limit = len(nameList)
+        upper = 10 + session["counter"]
+        lower = 0 + session["counter"]
+        if limit == upper:
+            upper = limit
+
+        if len(nameList) <= 10:
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+        elif len(nameList) > 10:
+
+            nameList = nameList[lower:upper]
+            priceList = priceList[lower:upper]
+            linkList = linkList[lower:upper]
+
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+
     elif session["Category"] == "Art Supplies":
-        return render_template("writingToolsPage.html")
+        artSuppliesDF = defaultDF[(defaultDF["Product Type"]) == "Art Supplies"]
+        nameDF = artSuppliesDF.loc[:, "Name"]
+        priceDF = artSuppliesDF.loc[:, "Price"]
+        linkDF = artSuppliesDF.loc[:, "WebLinks"]
+
+        nameList = nameDF.values.tolist()
+        priceList = priceDF.values.tolist()
+        linkList = linkDF.values.tolist()
+
+        limit = len(nameList)
+        upper = 10 + session["counter"]
+        lower = 0 + session["counter"]
+        if limit == upper:
+            upper = limit
+
+        if len(nameList) <= 10:
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+        elif len(nameList) > 10:
+
+            nameList = nameList[lower:upper]
+            priceList = priceList[lower:upper]
+            linkList = linkList[lower:upper]
+
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+
+@app.route("/subtractCounter", methods = ["POST"])
+def subtractCounter():
+    session["counter"] -= 1
+    defaultDF = df
+    if session["ascending"] == True:
+        defaultDF = ascendingDF
+    elif session["ascending"] == False:
+        defaultDF = descendingDF
+
+    defaultDF = defaultDF[(defaultDF["Price"] >= session["lowerBound"]) & (defaultDF["Price"] <= session["upperBound"])]
+
+    if session["Category"] == "Tech":
+        techDF = defaultDF[(defaultDF["Product Type"]) == "Tech"]  # do the price thing here
+        nameDF = techDF.loc[:, "Name"]
+        priceDF = techDF.loc[:, "Price"]
+        linkDF = techDF.loc[:, "WebLinks"]
+
+        nameList = nameDF.values.tolist()
+        priceList = priceDF.values.tolist()
+        linkList = linkDF.values.tolist()
+
+        limit = len(nameList)
+        upper = 10 + session["counter"]
+        lower = 0 + session["counter"]
+        if limit == upper:
+            upper = limit
+
+        if len(nameList) <= 10:
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+        elif len(nameList) > 10:
+
+            nameList = nameList[lower:upper]
+            priceList = priceList[lower:upper]
+            linkList = linkList[lower:upper]
+
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+
+    elif session["Category"] == "Writing Tools":
+        writingDF = defaultDF[(defaultDF["Product Type"]) == "Writing Tools"]
+        nameDF = writingDF.loc[:, "Name"]
+        priceDF = writingDF.loc[:, "Price"]
+        linkDF = writingDF.loc[:, "WebLinks"]
+
+        nameList = nameDF.values.tolist()
+        priceList = priceDF.values.tolist()
+        linkList = linkDF.values.tolist()
+
+        limit = len(nameList)
+        upper = 10 + session["counter"]
+        lower = 0 + session["counter"]
+        if limit == upper:
+            upper = limit
+
+        if len(nameList) <= 10:
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+        elif len(nameList) > 10:
+
+            nameList = nameList[lower:upper]
+            priceList = priceList[lower:upper]
+            linkList = linkList[lower:upper]
+
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+
+    elif session["Category"] == "Art Supplies":
+        artSuppliesDF = defaultDF[(defaultDF["Product Type"]) == "Art Supplies"]
+        nameDF = artSuppliesDF.loc[:, "Name"]
+        priceDF = artSuppliesDF.loc[:, "Price"]
+        linkDF = artSuppliesDF.loc[:, "WebLinks"]
+
+        nameList = nameDF.values.tolist()
+        priceList = priceDF.values.tolist()
+        linkList = linkDF.values.tolist()
+
+        limit = len(nameList)
+        upper = 10 + session["counter"]
+        lower = 0 + session["counter"]
+        if limit == upper:
+            upper = limit
+
+        if len(nameList) <= 10:
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
+        elif len(nameList) > 10:
+
+            nameList = nameList[lower:upper]
+            priceList = priceList[lower:upper]
+            linkList = linkList[lower:upper]
+
+            everything = zip(nameList, priceList, linkList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle)
 
 @app.route("/ascendingButton", methods = ["POST"])
 def ascendingButton():
@@ -78,9 +311,12 @@ def descendingButton():
 def priceRange():
     upperBound = request.form["upperBound"]
     lowerBound = request.form["lowerBound"]
-    print(upperBound)
-    print(lowerBound)
-    return ('', 204)
+    try:
+        session["upperBound"] = float(upperBound)
+        session["lowerBound"] = float(lowerBound)
+        return ('', 204)
+    except:
+        return render_template("writingToolsPage.html")
 
 @app.route("/changeToTech", methods = ["POST"])
 def changeToTech():
@@ -90,6 +326,8 @@ def changeToTech():
         defaultDF = ascendingDF
     elif session["ascending"] == False:
         defaultDF = descendingDF
+
+    defaultDF = defaultDF[(defaultDF["Price"] >= session["lowerBound"]) & (defaultDF["Price"] <= session["upperBound"])]
 
     techDF = defaultDF[(defaultDF["Product Type"]) == "Tech"]
     nameDF = techDF.loc[:, "Name"]
@@ -101,7 +339,12 @@ def changeToTech():
     linkList = linkDF.head(10).values.tolist()
 
     everything = zip(nameList, priceList, linkList)
-    return render_template("writingToolsPage.html", everything = everything)
+
+    nameTitle = "Name"
+    priceTitle = "Price"
+    linkTitle = "Link"
+    return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                           link=linkTitle)
 
 @app.route("/changeToArtSupplies", methods = ["POST"])
 def changeToArtSupplies():
@@ -122,7 +365,12 @@ def changeToArtSupplies():
     linkList = linkDF.head(10).values.tolist()
 
     everything = zip(nameList, priceList, linkList)
-    return render_template("writingToolsPage.html", everything = everything)
+
+    nameTitle = "Name"
+    priceTitle = "Price"
+    linkTitle = "Link"
+    return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                           link=linkTitle)
 
 @app.route("/changeToWritingTools", methods = ["POST"])
 def changeToWritingTools():
@@ -132,6 +380,8 @@ def changeToWritingTools():
         defaultDF = ascendingDF
     elif session["ascending"] == False:
         defaultDF = descendingDF
+
+    defaultDF = defaultDF[(defaultDF["Price"] >= session["lowerBound"]) & (defaultDF["Price"] <= session["upperBound"])]
 
     writingToolsDF = defaultDF[(defaultDF["Product Type"]) == "Writing Tools"]
     nameDF = writingToolsDF.loc[:, "Name"]
@@ -143,7 +393,11 @@ def changeToWritingTools():
     linkList = linkDF.head(10).values.tolist()
 
     everything = zip(nameList, priceList, linkList)
-    return render_template("writingToolsPage.html", everything = everything)
+
+    nameTitle = "Name"
+    priceTitle = "Price"
+    linkTitle = "Link"
+    return render_template("writingToolsPage.html", everything = everything, name = nameTitle, price = priceTitle, link = linkTitle)
 
 if __name__ == "__main__":
     app.run(debug=True)
