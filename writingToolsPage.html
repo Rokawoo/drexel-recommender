@@ -8,23 +8,8 @@
     <h1>
         Writing Tools Page
     </h1>
-    <!-- <form action="/writingToolsOutput", method="POST">
-        <button> Press this to Generate Table </button>
-    </form> -->
-    <form action="/addCounter", method = "POST">
-        <button> Press this to Go Up 1 Item </button>
-    </form>
-    <form action="/subtractCounter", method="POST">
-        <button> Press this to Go Down 1 Item </button>
-    </form>
     <form action="/goBackHome" method="POST">
         <button> Go Back Home </button>
-    </form>
-    <form action="/sortAscending" method="POST">
-        <button> Sort Ascending </button>
-    </form>
-    <form action="/sortDescending" method="POST">
-        <button> Sort Descending </button>
     </form>
     <form action="/changeToTech" method="POST">
         <button> Change to Tech Products </button>
@@ -35,64 +20,33 @@
     <form action="/changeToWritingTools" method="POST">
         <button> Change to Writing Tools </button>
     </form>
-    <h1>
-    </h1>
+    <form action="/ascendingButton" method="POST">
+        <button> Ascending </button>
+    </form>
+    <form action="/descendingButton" method="POST">
+        <button> Descending </button>
+    </form>
+    <form action="/addCounter" method="POST">
+        <button> Add Counter</button>
+    </form>
+    <form action="/priceRange" method="POST">
+        <label> Upper Bound </label> <br>
+        <input type="text" name="upperBound"> <br>
+        <label> Lower Bound </label> <br>
+        <input type="text" name="lowerBound">
+        <input type="submit" value="submit">
+    </form>
     <table>
+        <th> Name </th>
+        <th> Price </th>
+        <th> Weblinks </th>
+        {% for (name, price, link) in everything %}
         <tr>
-            <th> Name </th>
-            <th> Price</th>
-            <th> WebLinks </th>
+            <td> {{name}} </td>
+            <td> {{price}} </td>
+            <td> {{link}} </td>
         </tr>
-        <tr>
-            <td> {{name1}} </td>
-            <td> {{price1}} </td>
-            <td> {{link1}} </td>
-        </tr>
-        <tr>
-            <td> {{name2}} </td>
-            <td> {{price2}} </td>
-            <td> {{link2}} </td>
-        </tr>
-        <tr>
-            <td> {{name3}} </td>
-            <td> {{price3}} </td>
-            <td> {{link3}} </td>
-        </tr>
-        <tr>
-            <td> {{name4}} </td>
-            <td> {{price4}} </td>
-            <td> {{link4}} </td>
-        </tr>
-        <tr>
-            <td> {{name5}} </td>
-            <td> {{price5}} </td>
-            <td> {{link5}} </td>
-        </tr>
-        <tr>
-            <td> {{name6}} </td>
-            <td> {{price6}} </td>
-            <td> {{link6}} </td>
-        </tr>
-        <tr>
-            <td> {{name7}} </td>
-            <td> {{price7}}</td>
-            <td> {{link7}} </td>
-        </tr>
-        <tr>
-            <td> {{name8}} </td>
-            <td> {{price8}} </td>
-            <td> {{link8}} </td>
-        </tr>
-        <tr>
-            <td> {{name9}} </td>
-            <td> {{price9}} </td>
-            <td> {{link9}} </td>
-        </tr>
-        <tr>
-            <td> {{name10}} </td>
-            <td> {{price10}} </td>
-            <td> {{link10}} </td>
-        </tr>
+        {% endfor %}
     </table>
 </body>
 </html>
