@@ -32,9 +32,14 @@
         transition: outline 0.2s ease-in-out, font-size none;
       }
       
+      #flask {
+         margin-top: 135px;
+        
+      }
       input[type=text] {
         color: #000066;
-        width: 99.5%;
+        width: 275px;
+        height: 30px;
       }
     </style>
 </head>
@@ -49,24 +54,75 @@
         <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
       </div>
       
-      <div id="Main" style="width:99.4%; height:150px; margin:auto; border:4px ridge #000066; background-image:url('img/YellowPicnic400x.png'); margin-top: 80px;">
-        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Please ask your question here!</font></p>
+      <div id="Main" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('img/YellowPicnic400x.png'); margin-top: 80px;">
+        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Choose Desired Category:</font></p>
+        <center style="margin-top: 0px; margin-left: 29px;">
+          <form id="flask" style="margin-left: -245px;" action="/changeToTech" method="POST">
+            <button>Tech Products</button>
+          </form>
+          <form id="flask" style="margin-left: 100px;" action="/changeToArtSupplies" method="POST">
+            <button>Art Supplies</button>
+          </form>
+          <form id="flask" style="margin-left: 445px;" action="/changeToWritingTools" method="POST">
+            <button>Writing Tools</button>
+          </form>
+          <form id="flask" style="margin-left: 790px;" action="/changeToApperal" method="POST">
+            <button>Apperal</button>
+          </form>
+        </center>
         
-        <form style="padding-left:5px" class = "grid" action = "/result" method = "POST">
-        <label for="input"><!-- no label --></label>
+        <p style="font-family:arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Choose Desired Order:</font></p>
+        <form id="flask" style="margin-top: 135px; margin-left: -216px" action="/ascendingButton" method="POST">
+          <button> Ascending </button>
+        </form>
+        <form id="flask" style="margin-top: 135px; margin-left: 129px" action="/descendingButton" method="POST">
+          <button> Descending </button>
+        </form>
+
+        <p style="font-family: arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Define Your Range:</font></p>
+        <form style="margin-top: -19px; padding-left: 33px" action="/priceRange" method="POST">
+          <label style="font-family: arial; font-color; #000066">Upper Bound</label> <br>
+          <input syle="width: 20%" type="text" id="rangeInput" name="upperbound"><br /><br />
+          <label style="font-family: arial; font-color; #000066">Lower Bound</label> <br>
+          <input syle="width: 20%" type="text" id="rangeInput" name="lowerBound"><br /><br />
+          <input style="background-color: #000066; color: white; margin: 4px 2px; margin-top: -5px" type="submit" value="Submit" class = "file_submit">
+        </form>
+        
+        <!--<form style="padding-left:5px" class = "grid" action = "/result" method = "POST">
+        <label for="input">no label</label>
          <input syle="width: 100%" type="text" id="input" name="input"><br /><br />
         <input style="background-color: #000066; color: white; margin: 4px 2px;" type="submit" value="Submit" class = "file_submit">
-        </form>
+        </form>-->
       </div>
       
       <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('img/WhitePicnic400x.png'); margin-top: 80px;">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Output:</font></p>
-        <!--<p style="font-size:30px; margin-top:auto;"><font color=#000066>output goes here</font></p>-->
         
-        <center style="width: 99.7%; height: 446px; margin-top: -25px">
+        <form action="/descendingButton" method="POST">
+          <button style=" margin-top: -80px; margin-left: -100px; float:;">Previous Page</button>
+        </form>
+        <form action="/addCounter" method="POST">
+          <button style=" margin-top: -80px; margin-left: 185px; float:;">Next Page</button>
+        </form>
         
+        <center style="width: 99.7%; height: 446px; margin-top: -0px">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Weblinks</th>
+              {% for (name, price, link) in everything %}
+            </tr>
+            <tr>
+              <td>{{name}}</td>
+              <td>{{price}}</td>
+              <td>{{link}}</td>
+            </tr>
+            {% endfor %}
+          </table>
         </center>
 
       </div>
+      
     </div>
   </body>
