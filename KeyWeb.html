@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Prototype</title>
+  </head>
+  <body>
+    <h1>Search</h1>
+    <form action="{{ url_for('search') }}" method="post">
+      <input type="text" name="keyword" placeholder="Search...">
+      <button type="submit">Search</button>
+    </form>
+  </body>
+</html>
