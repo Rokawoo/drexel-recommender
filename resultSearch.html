@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Results</title>
+  </head>
+  <body>
+{% if not error %}
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Product Type</th>
+      <th>Weblinks</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in results %}
+    <tr>
+      <td>{{ item['Name'] }}</td>
+      <td>{{ item['Price'] }}</td>
+      <td>{{ item['Product Type'] }}</td>
+      <td><a href="{{ item['WebLinks'] }}" target="_blank">{{ item['WebLinks'] }}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No results found.</p>
+{% endif %}
+   <form>
+      <button type="button" onclick="window.history.back()">Go back</button>
+    </form>
+  </body>
+</html>
+
