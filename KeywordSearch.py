@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 test = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
 
-# returns the user search bar html page.
+# returns the user search bar KeyWeb.html page.
 @app.route('/')
 def index():
     return render_template('KeyWeb.html')
