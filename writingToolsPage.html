@@ -3,54 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <title>Writing Tools Page</title>
-</head>
-<body>
-    <h1>
-        Writing Tools Page
-    </h1>
-    <form action="/goBackHome" method="POST">
-        <button> Go Back Home </button>
-    </form>
-    <form action="/changeToTech" method="POST">
-        <button> Change to Tech Products </button>
-    </form>
-    <form action="/changeToArtSupplies" method="POST">
-        <button> Change to Art Supplies </button>
-    </form>
-    <form action="/changeToWritingTools" method="POST">
-        <button> Change to Writing Tools </button>
-    </form>
-    <form action="/ascendingButton" method="POST">
-        <button> Ascending </button>
-    </form>
-    <form action="/descendingButton" method="POST">
-        <button> Descending </button>
-    </form>
-    <form action="/addCounter" method="POST">
-        <button> Add Counter</button>
-    </form>
-    <form action="/subtractCounter" method="POST">
-        <button> Subtract Counter </button>
-    </form>
-    <form action="/priceRange" method="POST">
-        <label> Upper Bound </label> <br>
-        <input type="text" name="upperBound"> <br>
-        <label> Lower Bound </label> <br>
-        <input type="text" name="lowerBound">
-        <input type="submit" value="submit">
-    </form>
-    <table>
-        <th> {{nameTitle}} </th>
-        <th> {{priceTitle}} </th>
-        <th> {{linkTitle}} </th>
+    <style>
+      body {
+       background-size: cover;
+      }
 
-        {% for (name, price, link) in everything %} <!-- Make the table headers into variables -->
-        <tr>
-            <td> {{name}} </td>
-            <td> {{price}} </td>
-            <td> {{link}} </td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
+      button {
+        background-color: #000066;
+        color: white;
+        height:48px;
+        width:275px;
+        position:relative;
+        margin: 4px 2px;
+        margin-top: -128px;
+        left:17.5%;
+        font-size:35px;
+        float: left;
+        outline: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        font-size: 35px;
+        color: #ffdc6d;
+        transform: scale(1.05);
+        transition: outline 0.2s ease-in-out, font-size none;
+      }
+
+      #flask {
+         margin-top: 135px;
+
+      }
+      input[type=text] {
+        color: #000066;
+        width: 275px;
+        height: 30px;
+      }
+    </style>
+</head>
+    <body>
+        <h1>
+            Writing Tools Page
+        </h1>
+        <div style="max-width: 1207px; margin: auto">
+          <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFF00;">
+            <img src="img/DrexelTopper.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
+            <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Drexel S&nbsp;&nbsp;rter</font></p>
+            <img src="img/star2.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 524px; margin-top:-215px; float:right;">
+
+            <button style="margin-left: -18px" onclick="window.location.href='https://rokawoo.neocities.org/CI102/';">Return Home</button>
+            <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
+          </div>
+
+          <div id="Main" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('img/YellowPicnic400x.png'); margin-top: 80px;">
+            <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Choose Desired Category:</font></p>
+            <center style="margin-top: 0px; margin-left: 29px;">
+              <form id="flask" style="margin-left: -245px;" action="/changeToTech" method="POST">
+                <button>Tech Products</button>
+              </form>
+              <form id="flask" style="margin-left: 100px;" action="/changeToArtSupplies" method="POST">
+                <button>Art Supplies</button>
+              </form>
+              <form id="flask" style="margin-left: 445px;" action="/changeToWritingTools" method="POST">
+                <button>Writing Tools</button>
+              </form>
+            </center>
+
+            <p style="font-family:arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Choose Desired Order:</font></p>
+            <form id="flask" style="margin-top: 135px; margin-left: -216px" action="/ascendingButton" method="POST">
+              <button> Ascending </button>
+            </form>
+            <form id="flask" style="margin-top: 135px; margin-left: 129px" action="/descendingButton" method="POST">
+              <button> Descending </button>
+            </form>
+
+        <div id="Output" style="width:99.4%; height:500px; margin:auto; border:4px ridge #000066; background-image:url('img/WhitePicnic400x.png'); margin-top: 80px;">
+            <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Output:</font></p>
+            <center>
+                <form action="/subtractCounter" method="POST">
+                    <button style=" margin-top: -80px; margin-left: -100px; float:;">Previous Page</button>
+                </form>
+                <form action="/addCounter" method="POST">
+                    <button style=" margin-top: -80px; margin-left: 185px; float:;">Next Page</button>
+                </form>
+            </center>
+
+            <center style="width: 99.7%; height: 446px; margin-top: -0px">
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Weblinks</th>
+                  {% for (name, price, link) in everything %}
+                </tr>
+                <tr>
+                  <td>{{name}}</td>
+                  <td>{{price}}</td>
+                  <td>{{link}}</td>
+                </tr>
+                {% endfor %}
+              </table>
+            </center>
+      </div>
+    </body>
 </html>
