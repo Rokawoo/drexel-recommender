@@ -13,13 +13,13 @@
       button {
         background-color: #000066;
         color: white;
-        height:48px; 
-        width:275px; 
+        height: 48px; 
+        width: 275px; 
         position:relative;
         margin: 4px 2px;
         margin-top: -128px;
-        left:17.5%;
-        font-size:35px;
+        left: 17.5%;
+        font-size: 35px;
         float: left;
         outline: none;
         cursor: pointer;
@@ -29,17 +29,17 @@
         font-size: 35px;
         color: #ffdc6d;
         transform: scale(1.05);
-        transition: outline 0.2s ease-in-out, font-size none;
+        transition: outline .2s ease-in-out, font-size none;
       }
       
       #flask {
          margin-top: 135px;
         
       }
-      input[type=text] {
+      input[type=number] {
         color: #000066;
         width: 275px;
-        height: 30px;
+        height: 34px;
       }
     </style>
 </head>
@@ -54,9 +54,9 @@
         <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
       </div>
       
-      <div id="Main" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('img/YellowPicnic400x.png'); margin-top: 80px;">
+      <div id="Main" style="width:99.4%; height: 290px; margin:auto; border:4px ridge #000066; background-image:url('img/YellowPicnic400x.png'); margin-top: 80px;">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Choose Desired Category:</font></p>
-        <center style="margin-top: 0px; margin-left: 29px;">
+        <div style="margin-top: 0px; margin-left: 29px;">
           <form id="flask" style="margin-left: -245px;" action="/changeToTech" method="POST">
             <button>Tech Products</button>
           </form>
@@ -69,43 +69,57 @@
           <form id="flask" style="margin-left: 790px;" action="/changeToApperal" method="POST">
             <button>Apperal</button>
           </form>
-        </center>
+        </div>
         
-        <p style="font-family:arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Choose Desired Order:</font></p>
-        <form id="flask" style="margin-top: 135px; margin-left: -216px" action="/ascendingButton" method="POST">
-          <button> Ascending </button>
-        </form>
-        <form id="flask" style="margin-top: 135px; margin-left: 129px" action="/descendingButton" method="POST">
-          <button> Descending </button>
-        </form>
-
-        <p style="font-family: arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Define Your Range:</font></p>
-        <form style="margin-top: -19px; padding-left: 33px" action="/priceRange" method="POST">
-          <label style="font-family: arial; font-color; #000066">Upper Bound</label> <br>
-          <input syle="width: 20%" type="text" id="rangeInput" name="upperbound"><br /><br />
-          <label style="font-family: arial; font-color; #000066">Lower Bound</label> <br>
-          <input syle="width: 20%" type="text" id="rangeInput" name="lowerBound"><br /><br />
-          <input style="background-color: #000066; color: white; margin: 4px 2px; margin-top: -5px" type="submit" value="Submit" class = "file_submit">
-        </form>
+        
+        <div>
+          <p style="font-family:arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Choose Desired Order:</font></p>
+          <form id="flask" style="margin-top: 135px; margin-left: -216px" action="/ascendingButton" method="POST">
+            <button> Ascending </button>
+          </form>
+          <form id="flask" style="margin-top: 135px; margin-left: 129px" action="/descendingButton" method="POST">
+            <button> Descending </button>
+          </form>
+        </div>
+        
+        <div style="margin-top: -125px; padding-left: 595px; float: left;">
+          <p style="font-family: arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Define Your Price Range:</font></p>
+          <form style="margin-top: -26px; padding-left: 9px" action="/priceRange" method="POST">
+            <label style="font-family: arial; font-color; #000066;">Upper Bound</label> <br>
+            <input syle="width: 20%" type="number" id="rangeInput" name="upperbound"><br /><br />
+            <div style="float: right; margin-top: -71px; margin-left: 285px;">
+              <label style="font-family: arial; font-color; #000066">Lower Bound</label> <br>
+              <input syle="width: 20%; float:" type="number" id="rangeInput" name="lowerBound"><br /><br />
+            </div>
+            <br>
+            <div style="float: right; margin-top: 0px; margin-left: 223px;">
+              <input id="sub" style="width: 100px; height: 34px; background-color: #000066; color: white; margin: 4px 2px;
+              margin-top: -5px; font-size: 25px;" type="submit" value="Submit" class="file_submit">
+            </div>
+          </form>
+        </div>
         
         <!--<form style="padding-left:5px" class = "grid" action = "/result" method = "POST">
         <label for="input">no label</label>
          <input syle="width: 100%" type="text" id="input" name="input"><br /><br />
         <input style="background-color: #000066; color: white; margin: 4px 2px;" type="submit" value="Submit" class = "file_submit">
         </form>-->
+        
       </div>
       
-      <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('img/WhitePicnic400x.png'); margin-top: 80px;">
+      <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('img/WhitePicnic400x.png'); margin-top: 80px; min-height: calc(100vh - 50px);">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Output:</font></p>
         
+        <div style="float: left; margin-top: 0px; margin-left: 175px;">
         <form action="/descendingButton" method="POST">
-          <button style=" margin-top: -80px; margin-left: -100px; float:;">Previous Page</button>
+          <button style="width: 140px; height: 35px; font-size: 25px; margin-top: -64px; margin-left: -100px; float:;">Last Page</button>
         </form>
         <form action="/addCounter" method="POST">
-          <button style=" margin-top: -80px; margin-left: 185px; float:;">Next Page</button>
+          <button style="width: 140px; height: 35px; font-size: 25px; margin-top: -80px; margin-left: 50px; float:;">Next Page</button>
         </form>
+        </div>
         
-        <center style="width: 99.7%; height: 446px; margin-top: -0px">
+        <center style="width: 99.7%; height: 446px; margin-top: -35px; float: left">
           <table>
             <tr>
               <th>Name</th>
