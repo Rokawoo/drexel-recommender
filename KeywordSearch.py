@@ -27,7 +27,7 @@ def search():
             result_dict['Product Type'] = row['Product Type']
             result_dict['WebLinks'] = row['WebLinks']
             results.append(result_dict)
-        return render_template('resultSearch.html', error=False, results=results)
+        return render_template('KeyWeb.html', error=False, results=results)
 
 # Allows user to click on website links and redirects to the official Drexel University Store
 @app.route('/WebLinks/<string:link>', methods=['GET'])
