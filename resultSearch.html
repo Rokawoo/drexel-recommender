@@ -1,36 +1,97 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <title>Search Results</title>
-  </head>
-  <body>
-{% if not error %}
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Product Type</th>
-      <th>Weblinks</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for item in results %}
-    <tr>
-      <td>{{ item['Name'] }}</td>
-      <td>{{ item['Price'] }}</td>
-      <td>{{ item['Product Type'] }}</td>
-      <td><a href="{{ item['WebLinks'] }}" target="_blank">{{ item['WebLinks'] }}</a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% else %}
-<p>No results found.</p>
-{% endif %}
-   <form>
-      <button type="button" onclick="window.history.back()">Go back</button>
-    </form>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drexel Reccomender</title>
+    <link rel="icon" type="image/x-icon" href="img/DrexelIcon.ico">
+    
+    <style>
+      body {
+       background-size: cover;
+      } 
+    
+      input[type=text] {
+        color: #000066;
+        width: 99.5%;
+      }
+      
+      button {
+        background-color: #000066;
+        color: white;
+        height:48px; 
+        width:275px; 
+        position:relative;
+        margin: 4px 2px;
+        margin-top: -128px;
+        left:17.5%;
+        font-size:35px;
+        float: left;
+        outline: none;
+        cursor: pointer;
+      }
+      
+       button:hover {
+        font-size: 35px;
+        color: #ffdc6d;
+        transform: scale(1.05);
+        transition: outline 0.2s ease-in-out, font-size none;
+      }
+    </style>
+</head>
+  <body style="background-image: url('https://i.imgur.com/fd7UQ29.png'); overflow-x:hidden; overflow-y:shown;">
+     <div style="max-width: 1207px; margin: auto"> 
+      <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFF00;">
+        <img src="https://i.imgur.com/zWvuwdW.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
+        <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Drexel Recc&nbsp;&nbsp;mender</font></p>
+        <img src="https://i.imgur.com/tb5kxKM.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 350px; margin-top:-215px; float:right;">
+        
+        <form action="/goBackHome" method="POST">
+            <button style="margin-left: -18px">Return Home</button>
+        </form>
+        <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
+      </div>
+      
+      <div id="Main" style="width:99.4%; height:150px; margin:auto; border:4px ridge #000066; background-image:url('https://i.imgur.com/OETuRTu.png'); margin-top: 80px;">
+        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Please enter your key words:</font></p>
+        
+        <form style="padding-left:5px" action="{{ url_for('search') }}" method="post">
+          <label for="input"><!-- no label --></label>
+          <input syle="width: 100%" type="text" id="input" name="keyword" placeholder="Search..."><br /><br />
+          <input style="background-color: #000066; color: white; margin: 4px 2px;" type="submit" value="Submit">
+        </form>
+        
+      </div>
+      
+      <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('https://i.imgur.com/NHhpyuJ.png'); margin-top: 80px; min-height: calc(100vh - 500px);">
+        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Output:</font></p>
+        
+        <center style="width: 99.7%; height: 446px; margin-top: -25px">
+        {% if not error %}
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Product Type</th>
+                <th>Weblinks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in results %}
+              <tr>
+                <td>{{ item['Name'] }}</td>
+                <td>{{ item['Price'] }}</td>
+                <td>{{ item['Product Type'] }}</td>
+                <td><a href="{{ item['WebLinks'] }}" target="_blank">{{ item['WebLinks'] }}</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <h1>No results found.</h1>
+          {% endif %}
+        </center>
+        
+      </div>
+    </div>
   </body>
-</html>
-
