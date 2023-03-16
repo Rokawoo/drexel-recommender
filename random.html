@@ -1,10 +1,58 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>Random Item Selector</title>
-    </head>
-    <body>
-        <h1>Random Item:</h1>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drexel Reccomender</title>
+    <link rel="icon" type="image/x-icon" href="img/DrexelIcon.ico">
+    
+    <style>
+      body {
+       background-size: cover;
+      } 
+      
+      button {
+        background-color: #000066;
+        color: white;
+        height:48px; 
+        width:275px; 
+        position:relative;
+        margin: 4px 2px;
+        margin-top: -128px;
+        left:17.5%;
+        font-size:35px;
+        float: left;
+        outline: none;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        font-size: 35px;
+        color: #ffdc6d;
+        transform: scale(1.05);
+        transition: outline 0.2s ease-in-out, font-size none;
+      }
+    </style>
+</head>
+  <body style="background-image: url('https://i.imgur.com/fd7UQ29.png'); overflow-x:hidden; overflow-y:shown;">
+     <div style="max-width: 1207px; margin: auto"> 
+      <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFF00;">
+        <img src="https://i.imgur.com/zWvuwdW.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
+        <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Drexel Rand&nbsp;&nbsp;m</font></p>
+        <img src="https://i.imgur.com/tb5kxKM.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 336px; margin-top:-215px; float:right;">
+        <form action="/goBackHome" method="POST">
+            <button style="margin-left: -18px">Return Home</button>
+        </form>
+          <form action="/random" method="POST">
+              <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Click Roll</button>
+          </form>
+      </div>
+      
+      <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('https://i.imgur.com/NHhpyuJ.png'); margin-top: 87px;">
+        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Here's your random product!:</font></p>
+        <center style="width: 99.7%; height: 446px; margin-top: -25px">
         <p>{{ random_item }}</p>
-    </body>
-</html>
+        </center>
+      </div>
+      
+    </div>
+  </body>
