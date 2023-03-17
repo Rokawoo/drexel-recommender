@@ -1,14 +1,21 @@
 from flask import Flask, render_template, redirect, session, url_for, request
 import pandas as pd
+import os
+
+#Start of Loren's Code
+imgFolder = os.path.join('static', 'img')
 
 df = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
 
 ascendingDF = df.sort_values(by="Price", ascending=True)
 descendingDF = df.sort_values(by="Price", ascending=False)
 
+
 app = Flask(__name__)
 app.secret_key = "asfasdfasdfasdfasdf"
 rows = len(df.axes[0])
+
+app.config['UPLOAD_FOLDER'] = imgFolder
 
 @app.route("/") #as soon as you log into
 @app.route("/home") #home page
@@ -33,8 +40,8 @@ def sortPage():
 def goBackHome():
     return render_template("home.html")
 
-@app.route("/goBackWritingToolsPage", methods = ["POST"])
-def goBackWritingToolsPage():
+@app.route("/goBackSort", methods = ["POST"])
+def goBackSort():
     defaultDF = df
     if session["ascending"] == True:
         defaultDF = ascendingDF
@@ -55,8 +62,10 @@ def goBackWritingToolsPage():
     nameTitle = "Name"
     priceTitle = "Price"
     linkTitle = "Link"
-    return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle)
+
+    drexelTopper = os.path.join(app.config['UPLOAD_FOLDER'], 'DrexelTopper.png')
+    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+                           link=linkTitle, drexelTopper = drexelTopper)
 
 @app.route("/addCounter", methods = ["POST"])
 def addCounter():
@@ -102,7 +111,7 @@ def addCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
 
     elif session["Category"] == "Writing Tools":
@@ -126,7 +135,7 @@ def addCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
         elif len(nameList) > 10:
 
@@ -138,7 +147,7 @@ def addCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
 
     elif session["Category"] == "Art Supplies":
@@ -162,7 +171,7 @@ def addCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
         elif len(nameList) > 10:
 
@@ -174,7 +183,7 @@ def addCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
 
 @app.route("/subtractCounter", methods = ["POST"])
@@ -209,7 +218,7 @@ def subtractCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
         elif len(nameList) > 10:
 
@@ -221,7 +230,7 @@ def subtractCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
 
     elif session["Category"] == "Writing Tools":
@@ -245,7 +254,7 @@ def subtractCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
         elif len(nameList) > 10:
 
@@ -257,7 +266,7 @@ def subtractCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
 
     elif session["Category"] == "Art Supplies":
@@ -281,7 +290,7 @@ def subtractCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
         elif len(nameList) > 10:
 
@@ -293,7 +302,7 @@ def subtractCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle)
 
 @app.route("/ascendingButton", methods = ["POST"])
@@ -316,7 +325,7 @@ def priceRange():
         session["lowerBound"] = float(lowerBound)
         return ('', 204)
     except:
-        return render_template("writingToolsPage.html")
+        return render_template("sort.html")
 
 @app.route("/changeToTech", methods = ["POST"])
 def changeToTech():
@@ -343,7 +352,7 @@ def changeToTech():
     nameTitle = "Name"
     priceTitle = "Price"
     linkTitle = "Link"
-    return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle)
 
 @app.route("/changeToArtSupplies", methods = ["POST"])
@@ -369,11 +378,11 @@ def changeToArtSupplies():
     nameTitle = "Name"
     priceTitle = "Price"
     linkTitle = "Link"
-    return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle)
 
-@app.route("/changeToWritingTools", methods = ["POST"])
-def changeToWritingTools():
+@app.route("/changeToSort", methods = ["POST"])
+def changeToSort():
     session["Category"] = "Writing Tools"
     defaultDF = df
     if session["ascending"] == True:
@@ -397,7 +406,57 @@ def changeToWritingTools():
     nameTitle = "Name"
     priceTitle = "Price"
     linkTitle = "Link"
-    return render_template("writingToolsPage.html", everything = everything, name = nameTitle, price = priceTitle, link = linkTitle)
+    return render_template("sort.html", everything = everything, name = nameTitle, price = priceTitle, link = linkTitle)
+
+@app.route("/goBackRandom", methods=["POST"])
+def goBackRandom():
+    return render_template("randomPage.html")
+
+@app.route("/goBackRecommender", methods=["POST"])
+def goBackRecommender():
+    return render_template("recommenderPage.html")
+
+#End of Loren's Code
+
+#Zach
+def get_random_item():
+    df = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
+    random_item = df.sample()
+    return random_item.values.tolist()[0]
+@app.route('/')
+@app.route('/random', methods=["POST"])
+def index():
+    random_item = get_random_item()
+    return render_template("randomPage.html", random_item=random_item)
+#End of Zach's Code
+
+#Aidan's Code
+@app.route('/search', methods=['POST'])
+def search():
+    test = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
+    keyword = request.form['keyword'] # Get keyword from form
+    matchKeyword = test[test['Name'].str.contains(keyword, case=False)]
+    if len(matchKeyword) == 0:
+        return render_template('resultSearch.html', error=True)
+    else:
+        results = []
+        for index, row in matchKeyword.iterrows():
+            result_dict = {}
+            result_dict['Name'] = row['Name']
+            result_dict['Price'] = row['Price']
+            result_dict['Product Type'] = row['Product Type']
+            result_dict['WebLinks'] = row['WebLinks']
+            results.append(result_dict)
+        return render_template("recommenderPage.html", error=False, results=results)
+
+
+# Allows user to click on website links and redirects to the official Drexel University Store
+@app.route('/WebLinks/<string:link>', methods=['GET'])
+def weblink(link):
+    return redirect(link)
+
+#End Aidan
+
 
 if __name__ == "__main__":
     app.run(debug=True)
