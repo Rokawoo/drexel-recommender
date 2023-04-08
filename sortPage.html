@@ -104,12 +104,13 @@
                   <th>Name</th>
                   <th>Price</th>
                   <th>Weblinks</th>
-                  {% for (name, price, link) in everything %}
+                  {% for (name, price, link, image) in everything %}
                 </tr>
                 <tr>
                   <td>{{name}}</td>
-                  <td>{{price}}</td>
+                  <td>{{price}}</td><
                   <td>{{link}}</td>
+                   <td> <img src={{image}} width="30px" height="30px" alt="picture"> </td>
                 </tr>
                 {% endfor %}
               </table>
