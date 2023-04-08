@@ -5,7 +5,7 @@ import os
 #Start of Loren's Code
 imgFolder = os.path.join('static', 'img')
 
-df = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
+df = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(3).csv")
 
 ascendingDF = df.sort_values(by="Price", ascending=True)
 descendingDF = df.sort_values(by="Price", ascending=False)
@@ -53,19 +53,22 @@ def goBackSort():
     nameDF = defaultDF.loc[:, "Name"]
     priceDF = defaultDF.loc[:, "Price"]
     linkDF = defaultDF.loc[:, "WebLinks"]
+    imageDF = defaultDF.loc[:, "ImageLinks"]
 
     nameList = nameDF.head(10).values.tolist()
     priceList = priceDF.head(10).values.tolist()
     linkList = linkDF.head(10).values.tolist()
+    imageList = imageDF.head(10).values.tolist()
 
-    everything = zip(nameList, priceList, linkList)
+    everything = zip(nameList, priceList, linkList, imageList)
     nameTitle = "Name"
     priceTitle = "Price"
     linkTitle = "Link"
+    imageTitle = "Image"
 
     drexelTopper = os.path.join(app.config['UPLOAD_FOLDER'], 'DrexelTopper.png')
     return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle, drexelTopper = drexelTopper)
+                           link=linkTitle, drexelTopper = drexelTopper, imageTitle=imageTitle)
 
 @app.route("/addCounter", methods = ["POST"])
 def addCounter():
@@ -83,10 +86,12 @@ def addCounter():
         nameDF = techDF.loc[:, "Name"]
         priceDF = techDF.loc[:, "Price"]
         linkDF = techDF.loc[:, "WebLinks"]
+        imageDF = techDF.loc[:, "ImageLinks"]
 
         nameList = nameDF.values.tolist()
         priceList = priceDF.values.tolist()
         linkList = linkDF.values.tolist()
+        imageList = imageDF.values.tolist()
 
         limit = len(nameList)
         upper = 10 + session["counter"]
@@ -95,34 +100,39 @@ def addCounter():
             upper = limit
 
         if len(nameList) <= 10:
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
             priceList = priceList[lower:upper]
             linkList = linkList[lower:upper]
+            imageList = imageList[lower:upper]
 
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
 
     elif session["Category"] == "Writing Tools":
         writingDF = defaultDF[(defaultDF["Product Type"]) == "Writing Tools"]
         nameDF = writingDF.loc[:, "Name"]
         priceDF = writingDF.loc[:, "Price"]
         linkDF = writingDF.loc[:, "WebLinks"]
+        imageDF = writingDF.loc[:, "ImageLinks"]
 
         nameList = nameDF.values.tolist()
         priceList = priceDF.values.tolist()
         linkList = linkDF.values.tolist()
+        imageList = imageDF.values.tolist()
 
         limit = len(nameList)
         upper = 10 + session["counter"]
@@ -135,30 +145,35 @@ def addCounter():
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
             priceList = priceList[lower:upper]
             linkList = linkList[lower:upper]
+            imageList = imageList[lower:upper]
 
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
 
     elif session["Category"] == "Art Supplies":
         artSuppliesDF = defaultDF[(defaultDF["Product Type"]) == "Art Supplies"]
         nameDF = artSuppliesDF.loc[:, "Name"]
         priceDF = artSuppliesDF.loc[:, "Price"]
         linkDF = artSuppliesDF.loc[:, "WebLinks"]
+        imageDF = artSuppliesDF.loc[:, "ImageLinks"]
 
         nameList = nameDF.values.tolist()
         priceList = priceDF.values.tolist()
         linkList = linkDF.values.tolist()
+        imageList = imageDF.values.tolist()
 
         limit = len(nameList)
         upper = 10 + session["counter"]
@@ -167,24 +182,27 @@ def addCounter():
             upper = limit
 
         if len(nameList) <= 10:
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
             priceList = priceList[lower:upper]
             linkList = linkList[lower:upper]
+            imageList = imageList[lower:upper]
 
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
 
 @app.route("/subtractCounter", methods = ["POST"])
 def subtractCounter():
@@ -202,10 +220,12 @@ def subtractCounter():
         nameDF = techDF.loc[:, "Name"]
         priceDF = techDF.loc[:, "Price"]
         linkDF = techDF.loc[:, "WebLinks"]
+        imageDF = techDF.loc[:, "ImageLinks"]
 
         nameList = nameDF.values.tolist()
         priceList = priceDF.values.tolist()
         linkList = linkDF.values.tolist()
+        imageList = imageDF.values.tolist()
 
         limit = len(nameList)
         upper = 10 + session["counter"]
@@ -214,34 +234,39 @@ def subtractCounter():
             upper = limit
 
         if len(nameList) <= 10:
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
             priceList = priceList[lower:upper]
             linkList = linkList[lower:upper]
+            imageList = imageList[lower:upper]
 
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
 
     elif session["Category"] == "Writing Tools":
         writingDF = defaultDF[(defaultDF["Product Type"]) == "Writing Tools"]
         nameDF = writingDF.loc[:, "Name"]
         priceDF = writingDF.loc[:, "Price"]
         linkDF = writingDF.loc[:, "WebLinks"]
+        imageDF = writingDF.loc[:, "ImageLinks"]
 
         nameList = nameDF.values.tolist()
         priceList = priceDF.values.tolist()
         linkList = linkDF.values.tolist()
+        imageList = imageDF.values.tolist()
 
         limit = len(nameList)
         upper = 10 + session["counter"]
@@ -250,34 +275,39 @@ def subtractCounter():
             upper = limit
 
         if len(nameList) <= 10:
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
             priceList = priceList[lower:upper]
             linkList = linkList[lower:upper]
+            imageList = imageList[lower:upper]
 
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
 
     elif session["Category"] == "Art Supplies":
         artSuppliesDF = defaultDF[(defaultDF["Product Type"]) == "Art Supplies"]
         nameDF = artSuppliesDF.loc[:, "Name"]
         priceDF = artSuppliesDF.loc[:, "Price"]
         linkDF = artSuppliesDF.loc[:, "WebLinks"]
+        imageDF = artSuppliesDF.loc[:, "ImageLinks"]
 
         nameList = nameDF.values.tolist()
         priceList = priceDF.values.tolist()
         linkList = linkDF.values.tolist()
+        imageList = imageDF.values.tolist()
 
         limit = len(nameList)
         upper = 10 + session["counter"]
@@ -286,24 +316,27 @@ def subtractCounter():
             upper = limit
 
         if len(nameList) <= 10:
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
             priceList = priceList[lower:upper]
             linkList = linkList[lower:upper]
+            imageList = imageList[lower:upper]
 
-            everything = zip(nameList, priceList, linkList)
+            everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
+            imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle)
+                                   link=linkTitle, imageTitle=imageTitle)
 
 @app.route("/ascendingButton", methods = ["POST"])
 def ascendingButton():
@@ -342,18 +375,21 @@ def changeToTech():
     nameDF = techDF.loc[:, "Name"]
     priceDF = techDF.loc[:, "Price"]
     linkDF = techDF.loc[:, "WebLinks"]
+    imageDF = techDF.loc[:, "ImageLinks"]
 
     nameList = nameDF.head(10).values.tolist()
     priceList = priceDF.head(10).values.tolist()
     linkList = linkDF.head(10).values.tolist()
+    imageList = imageDF.head(10).values.tolist()
 
-    everything = zip(nameList, priceList, linkList)
+    everything = zip(nameList, priceList, linkList, imageList)
 
     nameTitle = "Name"
     priceTitle = "Price"
     linkTitle = "Link"
+    imageTitle = "Image"
     return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle)
+                           link=linkTitle, imageTitle=imageTitle)
 
 @app.route("/changeToArtSupplies", methods = ["POST"])
 def changeToArtSupplies():
@@ -368,18 +404,21 @@ def changeToArtSupplies():
     nameDF = artDF.loc[:, "Name"]
     priceDF = artDF.loc[:, "Price"]
     linkDF = artDF.loc[:, "WebLinks"]
+    imageDF = artDF.loc[:, "ImageLinks"]
 
     nameList = nameDF.head(10).values.tolist()
     priceList = priceDF.head(10).values.tolist()
     linkList = linkDF.head(10).values.tolist()
+    imageList = imageDF.head(10).values.tolist()
 
-    everything = zip(nameList, priceList, linkList)
+    everything = zip(nameList, priceList, linkList, imageList)
 
     nameTitle = "Name"
     priceTitle = "Price"
     linkTitle = "Link"
+    imageTitle = "Image"
     return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle)
+                           link=linkTitle, imageTitle=imageTitle)
 
 @app.route("/changeToSort", methods = ["POST"])
 def changeToSort():
@@ -396,17 +435,21 @@ def changeToSort():
     nameDF = writingToolsDF.loc[:, "Name"]
     priceDF = writingToolsDF.loc[:, "Price"]
     linkDF = writingToolsDF.loc[:, "WebLinks"]
+    imageDF = writingToolsDF.loc[:, "ImageLinks"]
 
     nameList = nameDF.head(10).values.tolist()
     priceList = priceDF.head(10).values.tolist()
     linkList = linkDF.head(10).values.tolist()
+    imageList = imageDF.head(10).values.tolist()
 
-    everything = zip(nameList, priceList, linkList)
+    everything = zip(nameList, priceList, linkList, imageList)
 
     nameTitle = "Name"
     priceTitle = "Price"
     linkTitle = "Link"
-    return render_template("sort.html", everything = everything, name = nameTitle, price = priceTitle, link = linkTitle)
+    imageTitle = "Image"
+    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+                           link=linkTitle, imageTitle=imageTitle)
 
 @app.route("/goBackRandom", methods=["POST"])
 def goBackRandom():
