@@ -163,6 +163,46 @@ def addCounter():
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle)
 
+    elif session["Category"] == "Apparel":
+        apparelDF = defaultDF[(defaultDF["Product Type"]) == "Apparel"]
+        nameDF = apparelDF.loc[:, "Name"]
+        priceDF = apparelDF.loc[:, "Price"]
+        linkDF = apparelDF.loc[:, "WebLinks"]
+        imageDF = apparelDF.loc[:, "ImageLinks"]
+
+        nameList = nameDF.values.tolist()
+        priceList = priceDF.values.tolist()
+        linkList = linkDF.values.tolist()
+        imageList = imageDF.values.tolist()
+
+        limit = len(nameList)
+        upper = 10 + session["counter"]
+        lower = 0 + session["counter"]
+        if limit == upper:
+            upper = limit
+
+        if len(nameList) <= 10:
+            everything = zip(nameList, priceList, linkList, imageList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            imageTitle = "Image"
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle, imageTitle=imageTitle)
+        elif len(nameList) > 10:
+
+            nameList = nameList[lower:upper]
+            priceList = priceList[lower:upper]
+            linkList = linkList[lower:upper]
+            imageList = imageList[lower:upper]
+
+            everything = zip(nameList, priceList, linkList, imageList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            imageTitle = "Image"
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle, imageTitle=imageTitle)
     elif session["Category"] == "Art Supplies":
         artSuppliesDF = defaultDF[(defaultDF["Product Type"]) == "Art Supplies"]
         nameDF = artSuppliesDF.loc[:, "Name"]
@@ -337,6 +377,46 @@ def subtractCounter():
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle)
+    elif session["Category"] == "Apparel":
+        apparelDF = defaultDF[(defaultDF["Product Type"]) == "Apparel"]
+        nameDF = apparelDF.loc[:, "Name"]
+        priceDF = apparelDF.loc[:, "Price"]
+        linkDF = apparelDF.loc[:, "WebLinks"]
+        imageDF = apparelDF.loc[:, "ImageLinks"]
+
+        nameList = nameDF.values.tolist()
+        priceList = priceDF.values.tolist()
+        linkList = linkDF.values.tolist()
+        imageList = imageDF.values.tolist()
+
+        limit = len(nameList)
+        upper = 10 + session["counter"]
+        lower = 0 + session["counter"]
+        if limit == upper:
+            upper = limit
+
+        if len(nameList) <= 10:
+            everything = zip(nameList, priceList, linkList, imageList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            imageTitle = "Image"
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle, imageTitle=imageTitle)
+        elif len(nameList) > 10:
+
+            nameList = nameList[lower:upper]
+            priceList = priceList[lower:upper]
+            linkList = linkList[lower:upper]
+            imageList = imageList[lower:upper]
+
+            everything = zip(nameList, priceList, linkList, imageList)
+            nameTitle = "Name"
+            priceTitle = "Price"
+            linkTitle = "Link"
+            imageTitle = "Image"
+            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+                                   link=linkTitle, imageTitle=imageTitle)
 
 @app.route("/ascendingButton", methods = ["POST"])
 def ascendingButton():
@@ -436,6 +516,37 @@ def changeToSort():
     priceDF = writingToolsDF.loc[:, "Price"]
     linkDF = writingToolsDF.loc[:, "WebLinks"]
     imageDF = writingToolsDF.loc[:, "ImageLinks"]
+
+    nameList = nameDF.head(10).values.tolist()
+    priceList = priceDF.head(10).values.tolist()
+    linkList = linkDF.head(10).values.tolist()
+    imageList = imageDF.head(10).values.tolist()
+
+    everything = zip(nameList, priceList, linkList, imageList)
+
+    nameTitle = "Name"
+    priceTitle = "Price"
+    linkTitle = "Link"
+    imageTitle = "Image"
+    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+                           link=linkTitle, imageTitle=imageTitle)
+
+@app.route("/changeToApparel", methods=["POST"])
+def changeToApparel():
+    session["Category"] = "Apparel"
+    defaultDF = df
+    if session["ascending"] == True:
+        defaultDF = ascendingDF
+    elif session["ascending"] == False:
+        defaultDF = descendingDF
+
+    defaultDF = defaultDF[(defaultDF["Price"] >= session["lowerBound"]) & (defaultDF["Price"] <= session["upperBound"])]
+
+    apparelDF = defaultDF[(defaultDF["Product Type"]) == "Apparel"]
+    nameDF = apparelDF.loc[:, "Name"]
+    priceDF = apparelDF.loc[:, "Price"]
+    linkDF = apparelDF.loc[:, "WebLinks"]
+    imageDF = apparelDF.loc[:, "ImageLinks"]
 
     nameList = nameDF.head(10).values.tolist()
     priceList = priceDF.head(10).values.tolist()
