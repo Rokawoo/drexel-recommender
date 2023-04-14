@@ -1,20 +1,21 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drexel Randomizer</title>
     <link rel="icon" type="image/x-icon" href="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelIcon.ico">
-    
+
     <style>
       body {
        background-size: cover;
-      } 
-      
+      }
+
       button {
         background-color: #000066;
         color: white;
-        height:48px; 
-        width:275px; 
+        height:48px;
+        width:275px;
         position:relative;
         margin: 4px 2px;
         margin-top: -128px;
@@ -24,7 +25,7 @@
         outline: none;
         cursor: pointer;
       }
-      
+
       button:hover {
         font-size: 35px;
         color: #ffdc6d;
@@ -34,7 +35,7 @@
     </style>
 </head>
   <body style="background-image: url('https://www.cs.drexel.edu/~ays36/CI102/img/WhiteVector.png'); overflow-x:hidden; overflow-y:shown;">
-     <div style="max-width: 1207px; margin: auto"> 
+     <div style="max-width: 1207px; margin: auto">
       <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFF00;">
         <img src="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelTopper.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
         <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Drexel Rand&nbsp;&nbsp;m</font></p>
@@ -46,13 +47,30 @@
               <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Click Roll</button>
           </form>
       </div>
-      
+
       <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 87px;">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Here's your random product!:</font></p>
         <center style="width: 99.7%; height: 446px; margin-top: -25px">
-        <p>{{ random_item }}</p>
+        <table>
+                <tr>
+                  <th></th>
+                    <th>Name</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                  <th>Weblinks</th>
+                  {% for (image, name, price, category, link) in everything %}
+                </tr>
+                <tr>
+                    <td> <img src={{image}} width="160px" height="160px" alt="picture"> </td>
+                  <td>{{name}}</td>
+                  <td>{{price}}</td>
+                  <td>{{category}}</td>
+                  <td> <a href="{{link}}" target="_blank"> Click to go to website </td>
+                </tr>
+                {% endfor %}
+              </table>
         </center>
       </div>
-      
+
     </div>
   </body>
