@@ -17,6 +17,22 @@ rows = len(df.axes[0])
 
 app.config['UPLOAD_FOLDER'] = imgFolder
 
+def displayResults(nameDF, priceDF, linkDF, imageDF):
+    nameList = nameDF.head(10).values.tolist()
+    priceList = priceDF.head(10).values.tolist()
+    linkList = linkDF.head(10).values.tolist()
+    imageList = imageDF.head(10).values.tolist()
+
+    everything = zip(nameList, priceList, linkList, imageList)
+    nameTitle = "Name"
+    priceTitle = "Price"
+    linkTitle = "Link"
+    imageTitle = "Image"
+
+    return (everything, nameTitle, priceTitle,
+                           linkTitle, imageTitle)
+
+
 @app.route("/") #as soon as you log into
 @app.route("/home") #home page
 def home():
@@ -29,6 +45,10 @@ def home():
 
     session["upperBound"] = 5000.0
     session["lowerBound"] = 0.0
+
+    session["cartPrice"] = 0
+    session["cartPriceList"] = []
+    session["cartNameList"] = []
 
     return render_template("home.html")
 
@@ -55,6 +75,11 @@ def goBackSort():
     linkDF = defaultDF.loc[:, "WebLinks"]
     imageDF = defaultDF.loc[:, "ImageLinks"]
 
+    everything, nameTitle, priceTitle, linkTitle, imageTitle = displayResults(nameDF, priceDF, linkDF, imageDF)
+    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+                           link=linkTitle, imageTitle=imageTitle)
+
+'''
     nameList = nameDF.head(10).values.tolist()
     priceList = priceDF.head(10).values.tolist()
     linkList = linkDF.head(10).values.tolist()
@@ -65,10 +90,45 @@ def goBackSort():
     priceTitle = "Price"
     linkTitle = "Link"
     imageTitle = "Image"
+'''
 
-    drexelTopper = os.path.join(app.config['UPLOAD_FOLDER'], 'DrexelTopper.png')
-    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle, drexelTopper = drexelTopper, imageTitle=imageTitle)
+@app.route("/addToCart", methods = ["POST"])
+def addToCart():
+    productPrice = request.form["productPrice"]
+    productName = request.form["productName"]
+    try:
+        productPrice = float(productPrice)
+        session["cartPrice"] += productPrice
+        session["cartPriceList"].append(productPrice)
+        session["cartNameList"].append(productName)
+        return ('', 204)
+    except:
+        return ('', 204)
+
+@app.route("/removeFromCart", methods = ["POST"])
+def removeFromCart():
+    productPrice = float(request.form["productPrice"])
+    productName = request.form["productName"]
+    cartPriceList = session["cartPriceList"]
+    cartNameList = session["cartNameList"]
+    cartPriceList.remove(productPrice)
+    cartNameList.remove(productName)
+    session["cartPrice"] -= productPrice
+    session["cartPriceList"] = cartPriceList
+    session["cartNameList"] = cartNameList
+    everything = zip(cartPriceList, cartNameList)
+    totalPrice = session["cartPrice"]
+    totalPrice = format(totalPrice, "0.2f")
+    return render_template("cart.html", everything=everything, totalPrice=totalPrice)
+
+@app.route("/goToCart", methods = ["POST"])
+def goToCart():
+    cartPriceList = session["cartPriceList"]
+    cartNameList = session["cartNameList"]
+    everything = zip(cartPriceList, cartNameList)
+    totalPrice = session["cartPrice"]
+    totalPrice = format(totalPrice, "0.2f")
+    return render_template("cart.html", everything=everything, totalPrice=totalPrice)
 
 @app.route("/addCounter", methods = ["POST"])
 def addCounter():
@@ -100,11 +160,13 @@ def addCounter():
             upper = limit
 
         if len(nameList) <= 10:
+
             everything = zip(nameList, priceList, linkList, imageList)
             nameTitle = "Name"
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
+
             return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle)
         elif len(nameList) > 10:
