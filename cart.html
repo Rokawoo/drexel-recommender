@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    Cart
+</h1>
+<form action="/changeToSort" method="POST">
+    <button> Go Back Sort</button>
+</form>
+<h2>
+    Total Price: ${{totalPrice}}
+</h2>
+</h1>
+<table>
+    {% for (productPrice, productName) in everything %}
+    <tr>
+        <td>
+            {{productName}}
+        </td>
+        <td>
+            {{productPrice}}
+        </td>
+        <td>
+            <form action="/removeFromCart" method="POST">
+                <input type="hidden" value="{{productName}}" name="productName">
+                <input type="hidden" value="{{productPrice}}" name="productPrice">
+                <input type="submit" value="Remove from Cart">
+            </form>
+
+        </td>
+    </tr>
+    {% endfor %}
+</body>
+</html>
