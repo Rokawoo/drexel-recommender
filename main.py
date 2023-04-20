@@ -60,6 +60,10 @@ def sortPage():
 def goBackHome():
     return render_template("home.html")
 
+@app.route("/goBackChat", methods = ["POST"])
+def goBackChat():
+    return render_template("chat.html")
+
 @app.route("/goBackSort", methods = ["POST"])
 def goBackSort():
     defaultDF = df
