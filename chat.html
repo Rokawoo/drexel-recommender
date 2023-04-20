@@ -10,7 +10,11 @@
             <button type="submit">Send</button>
         </form>
         <div id="chatHistory"></div>
-
+        <form action="/goBackHome" method="POST">
+          <button>
+            Go Back Home
+          </button>
+        </form>
         <script>
             $(document).ready(function() {
                 $('#chatForm').submit(function(event) {
