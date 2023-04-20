@@ -639,15 +639,27 @@ def goBackRecommender():
 #End of Loren's Code
 
 #Zach
-def get_random_item():
-    df = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
-    random_item = df.sample()
-    return random_item.values.tolist()[0]
 @app.route('/')
-@app.route('/random', methods=["POST"])
-def index():
-    random_item = get_random_item()
-    return render_template("randomPage.html", random_item=random_item)
+@app.route('/random')
+def random():
+    df = pd.read_csv("database.csv")
+    df = df.sample()
+    dfName = df['Name'].values.tolist()
+    dfPrice = df['Price'].values.tolist()
+    dfCat = df['Product Type'].values.tolist()
+    dfLink = df['WebLinks'].values.tolist()
+    dfImage = df['ImageLinks'].values.tolist()
+
+    everything = zip(dfImage, dfName, dfPrice, dfCat, dfLink)
+    nameTitle = "Name"
+    priceTitle = "Price"
+    linkTitle = "Link"
+    imageTitle = "Image"
+    categoryTitle = "Category"
+
+    return render_template('random.html', everything=everything, name=nameTitle, price=priceTitle,
+                           link=linkTitle, imageTitle=imageTitle, categoryTitle=categoryTitle)
+
 #End of Zach's Code
 
 #Aidan's Code
