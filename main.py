@@ -640,9 +640,10 @@ def goBackRecommender():
 
 #Zach
 @app.route('/')
-@app.route('/random')
+@app.route('/random', methods=["POST"])
 def random():
-    df = pd.read_csv("database.csv")
+    print("random")
+    df = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(3).csv")
     df = df.sample()
     dfName = df['Name'].values.tolist()
     dfPrice = df['Price'].values.tolist()
@@ -657,7 +658,7 @@ def random():
     imageTitle = "Image"
     categoryTitle = "Category"
 
-    return render_template('random.html', everything=everything, name=nameTitle, price=priceTitle,
+    return render_template('randomPage.html', everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle, categoryTitle=categoryTitle)
 
 #End of Zach's Code
