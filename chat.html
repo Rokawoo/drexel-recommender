@@ -1,43 +1,97 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>Chatbot Demo</title>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
-    <body>
-        <form id="chatForm" method="POST" action="/chat">
-            <input type="text" id="messageInput" name="message">
-            <button type="submit">Send</button>
-        </form>
-        <div id="chatHistory"></div>
-        <form action="/goBackHome" method="POST">
-          <button>
-            Go Back Home
-          </button>
-        </form>
-        <script>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drexel Reccomender</title>
+    <link rel="icon" type="image/x-icon" href="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelIcon.ico">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      body {
+       background-size: cover;
+      }
+
+      button {
+        background-color: #000066;
+        color: white;
+        height:48px;
+        width:275px;
+        position:relative;
+        margin: 4px 2px;
+        margin-top: -128px;
+        left:17.5%;
+        font-size:35px;
+        float: left;
+        outline: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        font-size: 35px;
+        color: #ffdc6d;
+        transform: scale(1.05);
+        transition: outline 0.2s ease-in-out, font-size none;
+      }
+
+      input[type=text] {
+        color: #000066;
+        width: 93.4%;
+        height: 36px;
+        font-size: 18px;
+        padding: 8px;
+      }
+    </style>
+</head>
+  <body style="background-image: url('https://www.cs.drexel.edu/~ays36/CI102/img/WhiteVector.png'); overflow-x:hidden; overflow-y:shown;">
+     <div style="max-width: 1207px; margin: auto">
+      <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFF00;">
+        <img src="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelTopper.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
+        <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Drexel Sam B&nbsp;&nbsp;t</font></p>
+        <img src="https://www.cs.drexel.edu/~ays36/CI102/img/star2.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 266px; margin-top:-215px; float:right;">
+
+        <button style="margin-left: -18px" onclick="window.location.href='https://rokawoo.neocities.org/CI102/';">Return Home</button>
+        <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
+      </div>
+
+      <div id="Main" style="width:99.4%; height:600px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/YellowPicnic400x.png'); margin-top: 80px;">
+        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Welcoming Sam! Your Shopping Assisnt Module.</font></p>
+
+        <div id="chatHistory" style="width: 98%; height: 500px; margin: auto; border:3px ridge #000066; background-color: white; overflow-y: scroll; max-height: 500px; margin-top: -200px"></div>
+
+          <script>
             $(document).ready(function() {
-                $('#chatForm').submit(function(event) {
-                    event.preventDefault();
-                    var message = $('#messageInput').val();
-                    $('#messageInput').val('');
-                    $.ajax({
-                        url: "/chat",
-                        type: "POST",
-                        contentType: "application/json",
-                        data: JSON.stringify({ "message": message }),
-                        success: function(data) {
-                            var userMessage = '<p>You: ' + message + '</p>';
-                            var botMessage = '<p>Bot: ' + data.response + '</p>';
-                            $('#chatHistory').append(userMessage);
-                            $('#chatHistory').append(botMessage);
-                        },
-                        error: function(error) {
-                            console.log(error);
-                        }
-                    });
+              $('#chatForm').submit(function(event) {
+                event.preventDefault();
+                var message = $('#messageInput').val();
+                $('#messageInput').val('');
+                $.ajax({
+                  url: '/chat',
+                  type: 'POST',
+                  contentType: 'application/json',
+                  data: JSON.stringify({ message: message }),
+                  success: function(data) {
+                    var userMessage = '<p style="padding-left: 8px; font-size: 18px; font-family: arial; text-shadow: 1px 1px #000066;">You: ' + message + '</p>';
+                    var botMessage = '<p style="padding-left: 8px; font-size: 18px; font-family: arial; text-shadow: 1px 1px #ffdc6d;">Sam: ' + data.response + '</p>';
+                    $('#chatHistory').append(userMessage);
+                    $('#chatHistory').append(botMessage);
+                    var chatHistory = document.getElementById("chatHistory");
+                    chatHistory.scrollTop = chatHistory.scrollHeight;
+                  },
+                  error: function(error) {
+                    console.log(error);
+                  }
                 });
+              });
             });
-        </script>
-    </body>
-</html>
+          </script>
+
+        <form id="chatForm" class="grid" style="padding-left: 10px; margin-top: 5px;" method="POST">
+          <input type="text" id="messageInput" name="message" placeholder="Enter your message here..." required autocomplete="off">
+          <input style="width: 62px; height: 35px; font-size: 18px; background-color: #000066; color: white; margin: 4px 2px;" type="submit" value="Send">
+        </form>
+
+      </div>
+
+    </div>
+  </body>
