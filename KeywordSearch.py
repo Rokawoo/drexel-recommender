@@ -11,7 +11,7 @@ database = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/D
 spell = SpellChecker(language='en')
 
 # List of blocked words
-blocked_words = ["fuck", "bitch", "shit"]
+blocked_words = ["fuck", "dumbass", "shit"]
 
 # Maximum number of suggestions to show for spell checker
 max_suggestions = 4
