@@ -1,4 +1,4 @@
-# Keyword Search program
+# Keyword search program
 
 from flask import Flask, render_template, request, redirect
 from spellchecker import SpellChecker
@@ -8,12 +8,19 @@ app = Flask(__name__)
 
 database = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
 
-spell = SpellChecker(language = 'en')
+spell = SpellChecker(language='en')
+
+# List of blocked words
+blocked_words = ["fuck", "bitch", "shit"]
+
+# Maximum number of suggestions to show for spell checker
+max_suggestions = 4
 
 # returns the user search bar html page.
 @app.route('/')
 def index():
     return render_template('KeyWeb.html')
+
 
 # Noticed that the results dictionary was repeating in my code, made results dictionary a function. (4/13/2023)
 def results_dictionary(row):
@@ -24,19 +31,33 @@ def results_dictionary(row):
     result_dict['WebLinks'] = row['WebLinks']
     return result_dict
 
+
+# filters out blocked words
+def filter_blocked_words(word):
+    word_lower = word.lower()  # Convert word to lowercase
+    word_split = word_lower.split() # Split word by space
+    filtered_word_split = [w for w in word_split if w not in blocked_words] # Filters out blocked words
+    filtered_word = ' '.join(filtered_word_split) # Joins filtered words together to form filtered word
+    return filtered_word
+
+
 # Search function
-# resultSearch.html is where search results will be outputted
 @app.route('/search', methods=['POST'])
 def search():
-    keyword = request.form.get('keyword', '') # Get keyword from form
-    suggestion = request.args.get('suggestion', '') # Get suggestion from query parameter
+    keyword = request.form.get('keyword', '')  # Get keyword from form
+    suggestion = request.args.get('suggestion', '')  # Get suggestion from query parameter
     if suggestion:
         keyword = suggestion
+
     matchKeyword = database[database['Name'].str.contains(keyword, case=False)]
     if len(matchKeyword) == 0:
         misspelled = spell.unknown([keyword])
         if misspelled:
             suggestions = spell.candidates(misspelled.pop())
+            # Filter out blocked words from suggestions
+            suggestions = [suggestion for suggestion in suggestions if suggestion not in blocked_words]
+            # Limit the number of suggestions to max_suggestions
+            suggestions = suggestions[:max_suggestions]
             return render_template('KeyWeb.html', error=True, suggestions=suggestions)
         else:
             return render_template('KeyWeb.html', error=True)
@@ -50,31 +71,34 @@ def search():
 
 @app.route('/spell_check', methods=['GET', 'POST'])
 def spell_check():
-    keyword = request.args.get('keyword') or request.form.get('keyword', '') # Get keyword from query parameter or form
+    keyword = request.args.get('keyword') or request.form.get('keyword', '')  # Get keyword from query parameter or form
+    keyword = filter_blocked_words(keyword)  # Filter out blocked words from keyword
     misspelled = spell.unknown([keyword])
     if len(misspelled) > 0:
         suggestions = spell.candidates(keyword)
-        return render_template('KeyWeb.html', error = True, suggestions = suggestions, keyword = keyword)
+        suggestions = [suggestion for suggestion in suggestions if suggestion not in blocked_words] # Filter out blocked words from suggestions
+        suggestions = suggestions[:max_suggestions] # max number of suggestions for spell checker
+        return render_template('KeyWeb.html', error=True, suggestions=suggestions, keyword=keyword)
     else:
         # No misspelled words found, so just return the search results
-        matchKeyword = database[database['Name'].str.contains(keyword, case = False)]
+        matchKeyword = database[database['Name'].str.contains(keyword, case=False)]
         if len(matchKeyword) == 0:
             # No results found, so return a "no results found" message
-            return render_template('KeyWeb.html', error = True)
+            return render_template('KeyWeb.html', error=True)
         else:
             # Results found, so return them to the user
-            # Added the fix for the user to click on the suggestion words to return the product results in the database. 4/09/23
-            # Formatting removing redundant code 4/13/23
             results = []
             for index, row in matchKeyword.iterrows():
-                result =results_dictionary(row)
+                result = results_dictionary(row)
                 results.append(result)
             return render_template('KeyWeb.html', error = False, results = results, keyword = keyword)
+
 
 # Allows user to click on website links and redirects to the official Drexel University Store
 @app.route('/WebLinks/<string:link>', methods=['GET'])
 def weblink(link):
     return redirect(link)
+
 
 # Main program call
 if __name__ == "__main__":
