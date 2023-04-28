@@ -50,26 +50,22 @@
 
       <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 87px;">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Here's your random product!:</font></p>
-        <center style="width: 99.7%; height: 446px; margin-top: -25px">
-        <table>
-                <tr>
-                  <th></th>
-                    <th>Name</th>
-                  <th>Price</th>
-                  <th>Category</th>
-                  <th>Weblinks</th>
-                  {% for (image, name, price, category, link) in everything %}
-                </tr>
-                <tr>
-                    <td> <img src={{image}} width="160px" height="160px" alt="picture"> </td>
-                  <td>{{name}}</td>
-                  <td>{{price}}</td>
-                  <td>{{category}}</td>
-                  <td> <a href="{{link}}" target="_blank"> Click to go to website </td>
-                </tr>
-                {% endfor %}
-              </table>
-        </center>
+        <div style="width: 99.7%; height: 446px; margin-top: -25px; position:relative;">
+
+        {% for (image, name, price, category, link) in everything %}
+        <div>
+          <img src= {{image}} width="420px" height="420px" alt="picture" style="margin-left: 15px; margin-top: -22px;">
+        </div>
+
+        <div style="position:absolute; left:50px; top:20px; margin-left: 430px">
+        <p style="font-size:20px; color:#000066;"> Name: {{name}}</p>
+        <p style="font-size:20px; color:#000066;"> Price: {{price}}</p>
+        <p style="font-size:20px; color:#000066;"> Category: {{category}}</p>
+        <a href="{{link}}" target="_blank" > Click to go to website <font size="12px" color=#000066></font></a>
+        </div>
+        {% endfor %}
+
+        </div>
       </div>
 
     </div>
