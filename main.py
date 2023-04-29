@@ -49,6 +49,8 @@ def home():
     session["cartPrice"] = 0
     session["cartPriceList"] = []
     session["cartNameList"] = []
+    session["cartImageList"] = []
+    session["cartLinkList"] = []
 
     return render_template("home.html")
 
@@ -100,11 +102,15 @@ def goBackSort():
 def addToCart():
     productPrice = request.form["productPrice"]
     productName = request.form["productName"]
+    productImage = request.form["productImage"]
+    productLink = request.form["productLink"]
     try:
         productPrice = float(productPrice)
         session["cartPrice"] += productPrice
         session["cartPriceList"].append(productPrice)
         session["cartNameList"].append(productName)
+        session["cartImageList"].append(productImage)
+        session["cartLinkList"].append(productLink)
         return ('', 204)
     except:
         return ('', 204)
@@ -115,12 +121,20 @@ def removeFromCart():
     productName = request.form["productName"]
     cartPriceList = session["cartPriceList"]
     cartNameList = session["cartNameList"]
+    cartImageList = session["cartImageList"]
+    cartLinkList = session["cartLinkList"]
+    productImage = request.form["productImage"]
+    productLink = request.form["productLink"]
     cartPriceList.remove(productPrice)
     cartNameList.remove(productName)
+    cartImageList.remove(productImage)
+    cartLinkList.remove(productLink)
     session["cartPrice"] -= productPrice
     session["cartPriceList"] = cartPriceList
     session["cartNameList"] = cartNameList
-    everything = zip(cartPriceList, cartNameList)
+    session["cartImageList"] = cartImageList
+    session["cartLinkList"] = cartLinkList
+    everything = zip(cartPriceList, cartNameList, cartImageList, cartLinkList)
     totalPrice = session["cartPrice"]
     totalPrice = format(totalPrice, "0.2f")
     return render_template("cart.html", everything=everything, totalPrice=totalPrice)
@@ -129,9 +143,12 @@ def removeFromCart():
 def goToCart():
     cartPriceList = session["cartPriceList"]
     cartNameList = session["cartNameList"]
-    everything = zip(cartPriceList, cartNameList)
+    cartImageList = session["cartImageList"]
+    cartLinkList = session["cartLinkList"]
+    everything = zip(cartPriceList, cartNameList, cartImageList, cartLinkList)
     totalPrice = session["cartPrice"]
     totalPrice = format(totalPrice, "0.2f")
+    print(session["cartLinkList"])
     return render_template("cart.html", everything=everything, totalPrice=totalPrice)
 
 @app.route("/addCounter", methods = ["POST"])
