@@ -3,36 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body {
+       background-size: cover;
+      }
+
+      button {
+        background-color: #000066;
+        color: white;
+        height:48px;
+        width:300px;
+        margin: 10px 2px;
+        font-size:35px
+        outline: none;
+        cursor: pointer;
+
+      }
+
+      button:hover {
+        font-size: 35px;
+        color: #ffdc6d;
+        outline: 5px solid white;
+        outline-offset: 4px;
+        transform: scale(1.08);
+        transition: outline 0.2s ease-in-out, font-size none;
+      }
+      h1 {
+        font-size: 100px;
+        color: #000066;
+      }
+    </style>
 </head>
 <body>
-<h1>
-    Cart
-</h1>
-<form action="/changeToSort" method="POST">
-    <button> Go Back Sort</button>
-</form>
-<h2>
-    Total Price: ${{totalPrice}}
-</h2>
-</h1>
-<table>
-    {% for (productPrice, productName) in everything %}
-    <tr>
-        <td>
-            {{productName}}
-        </td>
-        <td>
-            {{productPrice}}
-        </td>
-        <td>
-            <form action="/removeFromCart" method="POST">
-                <input type="hidden" value="{{productName}}" name="productName">
-                <input type="hidden" value="{{productPrice}}" name="productPrice">
-                <input type="submit" value="Remove from Cart">
-            </form>
+    <div style="max-width: 1000px; margin: auto">
+        <center>
+            <img src="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelTopper.png" draggable="false" width="180px" height="192px" alt="Topper" style="margin-right:10px; margin-left: 10px; margin-top:-30px; float:left;">
+            <div style="float:auto; margin-right: 200px">
+                <h1>
+                    Cart
+                </h1>
+            </div>
+        </center>
+        <br>
+        <br>
+        <div style="float: left; margin-top: -50px">
+            <center>
+                <form action="/changeToSort" method="POST">
+                    <button> Go back Sort </button>
+                </form>
+            </center>
+        </div>
+        <div style="float:right; margin-right: 100px; margin-top: -75px;">
+            <p style="color: #000066; font-size: 35px">
+                Total Price: ${{totalPrice}}
+            </p>
+        </div>
+        <div id="Output" style="width:90.4%; height:500px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 25px; min-height: calc(100vh - 50px);">
+            <center style="width: 90.7%; height: 406px; margin-top: -20px">
+                <br>
+            <div style="margin-left: 115px; margin-top: 20px; margin-right: 100px">
+                <table>
+                {% for (productPrice, productName, productImage, productLink) in everything %}
+                <tr>
+                    <td>
+                        {{productName}}
+                    </td>
+                    <td>
+                        {{productPrice}}
+                    </td>
+                    <td>
+                        <a href="{{productLink}}"> Product Link </a>
+                    </td>
+                    <td> <img src="{{productImage}}" width="30px" height="30px"> </td>
+                    <td>
+                        <form action="/removeFromCart" method="POST">
+                            <input type="hidden" value="{{productImage}}" name="productImage">
+                            <input type="hidden" value="{{productName}}" name="productName">
+                            <input type="hidden" value="{{productPrice}}" name="productPrice">
+                            <input type="hidden" value="{{productLink}}" name="productLink">
+                            <input type="submit" value="Remove from Cart">
+                        </form>
 
-        </td>
-    </tr>
-    {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
