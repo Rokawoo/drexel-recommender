@@ -47,15 +47,15 @@
      <div style="max-width: 1207px; margin: auto">
       <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFF00;">
         <img src="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelTopper.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
-        <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Drexel Sam B&nbsp;&nbsp;t</font></p>
-        <img src="https://www.cs.drexel.edu/~ays36/CI102/img/star2.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 266px; margin-top:-215px; float:right;">
+        <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Mario&nbsp;&nbsp;</font></p>
+        <img src="https://www.cs.drexel.edu/~ays36/CI102/img/star2.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 710px; margin-top:-215px; float:right;">
 
         <button style="margin-left: -18px" onclick="window.location.href='https://rokawoo.neocities.org/CI102/';">Return Home</button>
         <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
       </div>
 
       <div id="Main" style="width:99.4%; height:600px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/YellowPicnic400x.png'); margin-top: 80px;">
-        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Welcoming Sam! Your Shopping Assisnt Module.</font></p>
+        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Welcoming Mario! Your Online Shopping Assistant.</font></p>
 
         <div id="chatHistory" style="line-height: 1; word-wrap: break-word; width: 98%; height: 500px; margin: auto; border:3px ridge #000066; background-color: white; overflow-y: scroll; max-height: 500px; margin-top: -200px"></div>
 
@@ -72,7 +72,7 @@
                   data: JSON.stringify({ message: message }),
                   success: function(data) {
                     var userMessage = '<p style="padding-left: 8px; font-size: 18px; font-family: arial; text-shadow: 1px 1px #000066;">You: ' + message + '</p>';
-                    var botMessage = '<p style="padding-left: 8px; font-size: 18px; font-family: arial; text-shadow: 1px 1px #ffdc6d;">Sam: ' + data.response + '</p><br>';
+                    var botMessage = '<p style="padding-left: 8px; font-size: 18px; font-family: arial; text-shadow: 1px 1px #ffdc6d;">Mario: ' + data.response + '</p><br>';
                     $('#chatHistory').append(userMessage);
                     $('#chatHistory').append(botMessage);
                     var chatHistory = document.getElementById("chatHistory");
