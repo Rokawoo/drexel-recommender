@@ -61,6 +61,10 @@
 
           <script>
             $(document).ready(function() {
+              // Append initial message
+              var initialMessage = '<p style="padding-left: 8px; font-size: 18px; font-family: arial; text-shadow: 1px 1px #ffdc6d;">Mario: Hello there! I\'m Mario, your online shopping assistant chatbot for the Drexel Recommender. How may I assist you today?</p><br>';
+              $('#chatHistory').append(initialMessage);
+
               $('#chatForm').submit(function(event) {
                 event.preventDefault();
                 var message = $('#messageInput').val();

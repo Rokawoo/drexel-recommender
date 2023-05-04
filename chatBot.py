@@ -16,6 +16,7 @@ openai.api_key = os.environ.get('OPENAIAPIKEY')
 # Retrieve the personality & current date
 personality = os.environ.get('PERSONALITY')
 
+
 # Initialize list for chat history
 chatHistory = []
 
@@ -26,9 +27,6 @@ def index():
 
 
 @app.route('/chat', methods=['POST'])
-def welcome():
-  return jsonify({'response': "Hello there! I'm Mario, your online shopping assistant chatbot for the Drexel Recommender. How may I assist you today?"})
-
 def chat():
   data = request.get_json()
   message = data['message']
