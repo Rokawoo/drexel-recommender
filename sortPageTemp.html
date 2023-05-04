@@ -95,7 +95,7 @@
           <form id="flask" style="margin-left: 100px;" action="/changeToArtSupplies" method="POST">
             <button>Art Supplies</button>
           </form>
-          <form id="flask" style="margin-left: 445px;" action="/changeToWritingTools" method="POST">
+          <form id="flask" style="margin-left: 445px;" action="/changeToSort" method="POST">
             <button>Writing Tools</button>
           </form>
           <form id="flask" style="margin-left: 790px;" action="/changeToApperal" method="POST">
@@ -131,19 +131,13 @@
           </form>
         </div>
         
-        <!--<form style="padding-left:5px" class = "grid" action = "/result" method = "POST">
-        <label for="input">no label</label>
-         <input syle="width: 100%" type="text" id="input" name="input"><br /><br />
-        <input style="background-color: #000066; color: white; margin: 4px 2px;" type="submit" value="Submit" class = "file_submit">
-        </form>-->
-        
       </div>
       
       <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('img/WhitePicnic400x.png'); margin-top: 80px; min-height: calc(100vh - 50px);">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Output:</font></p>
         
         <div style="float: left; margin-top: 0px; margin-left: 175px;">
-        <form action="/descendingButton" method="POST">
+        <form action="/subtractCounter" method="POST">
           <button style="width: 140px; height: 35px; font-size: 25px; margin-top: -64px; margin-left: -100px; float:;">Last Page</button>
         </form>
         <form action="/addCounter" method="POST">
@@ -152,17 +146,28 @@
         </div>
         
         <center style="width: 99.7%; height: 446px; margin-top: -35px; float: left">
+          <br>
           <table>
             <tr>
               <th>Name</th>
               <th>Price</th>
               <th>Weblinks</th>
-              {% for (name, price, link) in everything %}
+              {% for (name, price, link, image) in everything %}
             </tr>
             <tr>
               <td>{{name}}</td>
               <td>{{price}}</td>
-              <td>{{link}}</td>
+                <td> <a href="{{link}}">Link to Website </a></td>
+               <td> <img src={{image}} width="30px" height="30px" alt="picture"> </td>
+                <form action="/addToCart" method="POST">
+                    <td>
+                        <input type="hidden" value="{{image}}" name="productImage">
+                        <input type="hidden" value="{{price}}" name="productPrice">
+                        <input type="hidden" value="{{name}}" name="productName">
+                        <input type="hidden" value="{{link}}" name="productLink">
+                        <input type="submit" value="Add to Cart">
+                    </td>
+                </form>
             </tr>
             {% endfor %}
           </table>
