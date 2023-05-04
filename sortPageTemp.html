@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drexel Reccomender</title>
-    <link rel="icon" type="image/x-icon" href="img/DrexelIcon.ico">
+    <link rel="icon" type="image/x-icon" href="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelIcon.ico">
     
     <script>
       function isNumberKey(evt) {
@@ -71,22 +71,22 @@
     </style>
     
 </head>
-  <body style="background-image: url('img/whiteVector.png'); overflow-x:hidden; overflow-y:shown;">
+  <body style="background-image: url('https://www.cs.drexel.edu/~ays36/CI102/img/WhiteVector.png'); overflow-x:hidden; overflow-y:shown;">
      <div style="max-width: 1207px; margin: auto"> 
       <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFF00;">
-        <img src="img/DrexelTopper.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
+        <img src="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelTopper.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
         <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Drexel S&nbsp;&nbsp;rter</font></p>
-        <img src="img/star2.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 524px; margin-top:-215px; float:right;">
+        <img src="https://www.cs.drexel.edu/~ays36/CI102/img/star2.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 524px; margin-top:-215px; float:right;">
         
         <form style="margin-top: -20px;" action="/goToCart" method="POST">
           <input class="cart" type="image" src="https://www.cs.drexel.edu/~ays36/CI102/img/cart.png" draggable="false" alt="cart">
         </form>
         
-        <button style="margin-left: -18px" onclick="window.location.href='https://rokawoo.neocities.org/CI102/';">Return Home</button>
+        <button style="margin-left: -18px" onclick="/goBackHome">Return Home</button>
         <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
       </div>
       
-      <div id="Main" style="width:99.4%; height: 290px; margin:auto; border:4px ridge #000066; background-image:url('img/YellowPicnic400x.png'); margin-top: 80px;">
+      <div id="Main" style="width:99.4%; height: 290px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/YellowPicnic400x.png'); margin-top: 80px;">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Choose Desired Category:</font></p>
         <div style="margin-top: 0px; margin-left: 29px;">
           <form id="flask" style="margin-left: -245px;" action="/changeToTech" method="POST">
@@ -118,10 +118,10 @@
           <p style="font-family: arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Define Your Price Range:</font></p>
           <form style="margin-top: -26px; padding-left: 9px" action="/priceRange" method="POST">
             <label style="font-family: arial; font-color; #000066;">Lower Bound</label> <br>
-            <input syle="width: 20%" type="numbers" id="rangeInput" name="lowerBound" placeholder="$ Min:" onkeypress="return isNumberKey(event)"><br /><br />
+            <input syle="width: 20%" type="numbers" id="rangeInput" name="lowerBound" placeholder="$ Min:" onkeypress="return isNumberKey(event)" autocomplete="off"><br /><br />
             <div style="float: right; margin-top: -71px; margin-left: 285px;">
               <label style="font-family: arial; font-color; #000066">Upper Bound</label> <br>
-              <input syle="width: 20%; float:" type="numbers" id="rangeInput" name="upperbound" placeholder="$ Max:" onkeypress="return isNumberKey(event)"><br /><br />
+              <input syle="width: 20%; float:" type="numbers" id="rangeInput" name="upperBound" placeholder="$ Max:" onkeypress="return isNumberKey(event)" autocomplete="off"><br /><br />
             </div>
             <br>
             <div style="float: right; margin-top: 0px; margin-left: 223px;">
@@ -133,7 +133,7 @@
         
       </div>
       
-      <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('img/WhitePicnic400x.png'); margin-top: 80px; min-height: calc(0vh - 50px);">
+      <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 80px; min-height: calc(0vh - 50px);">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Output:</font></p>
         
         <div style="float: left; margin-top: 0px; margin-left: 175px;">
