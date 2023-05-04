@@ -26,11 +26,12 @@ def index():
 
 
 @app.route('/chat', methods=['POST'])
+def welcome():
+  return jsonify({'response': "Hello there! I'm Mario, your online shopping assistant chatbot for the Drexel Recommender. How may I assist you today?"})
+
 def chat():
   data = request.get_json()
   message = data['message']
-  return jsonify({'response': "Hello there! I'm Mario, your online shopping assistant chatbot for the Drexel Recommender. How may I assist you today?"})
-
 
   try:
     # Generate response
