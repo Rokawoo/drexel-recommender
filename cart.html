@@ -33,31 +33,61 @@
         color: #000066;
       }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-    <div style="max-width: 1000px; margin: auto">
-        <center>
-            <img src="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelTopper.png" draggable="false" width="180px" height="192px" alt="Topper" style="margin-right:10px; margin-left: 10px; margin-top:-30px; float:left;">
-            <div style="float:auto; margin-right: 200px">
+<br>
+    <div style="background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/YellowPicnic400x.png'); width:70.4%; height:300px; margin:auto; border:4px ridge #000066;">
+        <div class="container">
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-4">
                 <h1>
-                    Cart
+                    Shopping Cart
                 </h1>
             </div>
-        </center>
+            <div class="col-4">
+
+            </div>
+        </div>
         <br>
-        <br>
-        <div style="float: left; margin-top: -50px">
-            <center>
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+            <div class="col-4">
+                <img src="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelTopper.png" draggable="false" width="180px" height="192px" alt="Topper" style="margin-right:10px; margin-left: 10px; margin-top:-30px; float:left;">
+            </div>
+            <div class="col-4">
+                <p style="color: #000066; font-size: 35px">
+                    Total Price: ${{totalPrice}}
+                </p>
                 <form action="/changeToSort" method="POST">
                     <button> Go back Sort </button>
                 </form>
-            </center>
+            </div>
+            <div class="col-2">
+
+            </div>
         </div>
-        <div style="float:right; margin-right: 100px; margin-top: -75px;">
-            <p style="color: #000066; font-size: 35px">
-                Total Price: ${{totalPrice}}
-            </p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8">
+
+            </div>
+            <div class="col-2">
+            </div>
         </div>
+
+    </div>
+    <div style="max-width: 1000px; margin: auto">
+        <br>
+        <br>
         <div id="Output" style="width:90.4%; height:500px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 25px; min-height: calc(100vh - 50px);">
             <center style="width: 90.7%; height: 406px; margin-top: -20px">
                 <br>
