@@ -10,7 +10,7 @@
        background-size: cover;
       } 
     
-      button {
+      button:not(.contact-form button) {
         background-color: #000066;
         color: white;
         height:48px; 
@@ -24,7 +24,7 @@
 
       } 
       
-      button:hover {
+      button:not(.contact-form button):hover {
         font-size: 35px;
         color: #ffdc6d;
         outline: 5px solid white;
@@ -82,6 +82,10 @@
           </form>
 
           <button style="font-size: 35px; margin-top: 89px; background-color: #800000;" onclick="window.location.href='https://www.cs.drexel.edu/~ays36/CI102/database.pdf';">Database</button>
+
+          <form class="contact-form" action="/goBackContact" method="POST">
+            <button style="position: relative; top: 25px; right: 9.5px; color: #000066; clear: both; background-color: transparent; border: none; text-decoration: underline;">&copy;Contact Us/Privacy Policy</button>
+          </form>
       </div>
       
       <div id="Description" style="width: 250px; height: 203px; margin-left: 90px; margin-top: -528px; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png');">
@@ -93,3 +97,4 @@
     </div>
     
   </body>
+
