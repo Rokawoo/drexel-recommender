@@ -1,4 +1,4 @@
-# Keyword search program
+# Keyword Search Program
 
 from flask import Flask, render_template, request, redirect
 from spellchecker import SpellChecker
@@ -6,15 +6,15 @@ import pandas as pd
 
 app = Flask(__name__)
 
-database = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
+database = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(3).csv")
 
 spell = SpellChecker(language='en')
 
 # List of blocked words
-blocked_words = ["fuck", "dumbass", "shit"]
+blocked_words = {'arse', 'arsehead', 'arsehole', 'ass', 'asshole', 'bastard', 'bitch', 'bloody', 'bollocks', 'brotherfucker', 'bugger', 'bullshit', 'child-fucker', 'christ on a bike', 'christ on a cracker', 'cock', 'cocksucker', 'crap', 'cunt', 'damn', 'dick', 'dickhead', 'dyke', 'fatherfucker', 'frigger', 'fuck', 'goddamn', 'godsdamn', 'hell', 'holy shit', 'horseshit', 'in shit', 'jesus christ', 'jesus fuck', 'kike', 'motherfucker', 'nigga', 'nigger', 'nigra', 'piss', 'prick', 'pussy', 'shit', 'shit ass', 'shite', 'sisterfucker', 'slut', 'son of a bitch', 'son of a whore', 'spastic', 'sweet jesus', 'turd', 'twat', 'wanker'}
 
 # Maximum number of suggestions to show for spell checker
-max_suggestions = 4
+max_suggestions = 10
 
 # returns the user search bar html page.
 @app.route('/')
@@ -29,6 +29,7 @@ def results_dictionary(row):
     result_dict['Price'] = row['Price']
     result_dict['Product Type'] = row['Product Type']
     result_dict['WebLinks'] = row['WebLinks']
+    result_dict['ImageLinks'] = row['ImageLinks']
     return result_dict
 
 
@@ -36,9 +37,12 @@ def results_dictionary(row):
 def filter_blocked_words(word):
     word_lower = word.lower()  # Convert word to lowercase
     word_split = word_lower.split() # Split word by space
+    if word_split is None:
+        return ""
     filtered_word_split = [w for w in word_split if w not in blocked_words] # Filters out blocked words
     filtered_word = ' '.join(filtered_word_split) # Joins filtered words together to form filtered word
     return filtered_word
+
 
 
 # Search function
@@ -54,6 +58,8 @@ def search():
         misspelled = spell.unknown([keyword])
         if misspelled:
             suggestions = spell.candidates(misspelled.pop())
+            if suggestions is None:
+                suggestions = []
             # Filter out blocked words from suggestions
             suggestions = [suggestion for suggestion in suggestions if suggestion not in blocked_words]
             # Limit the number of suggestions to max_suggestions
@@ -99,7 +105,6 @@ def spell_check():
 def weblink(link):
     return redirect(link)
 
-
 # Main program call
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
