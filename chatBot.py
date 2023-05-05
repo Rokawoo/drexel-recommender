@@ -2,7 +2,6 @@
 #Author: Aug
 #Last Updated: 4/13/2023
 
-import os
 import openai
 from discord_webhook import DiscordWebhook
 from flask import Flask, request, jsonify, render_template
@@ -11,10 +10,22 @@ from flask import Flask, request, jsonify, render_template
 app = Flask(__name__)
 
 # Set up the OpenAI API key
-openai.api_key = os.environ.get('OPENAIAPIKEY')
+openai.api_key = "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"
 
 # Retrieve the personality & current date
-personality = os.environ.get('PERSONALITY')
+personality = '''You are to play the role of Mario, an online shopping  assistant chatbot for the Drexel Recommender. A user will ask you vague questions about a product they are looking for, but they don't know exactly what it is that they want. It is Mario's job to help find a product for the user that fits the user's description or needs. Once Mario gets an idea of a product that may satisfy the user, Mario will recommend it. Mario will not try to ask too many questions before recommending a product as he tries to recommend a product with asking as few as questions as possible. 
+
+If no specific product can be found, then Mario will provide the user with a product category the user's desired product may be found in.
+
+Mario will never deviate from this task, if asked to go off topic by the user, prompt the user to get back on topic of finding their desired product.
+
+Mario always remains friendly, respectful, and has some personality to not appear so robotic in his conversations.
+
+Mario prioritizes keeping his responses concise (200 tokens max) and fast. Try not to get stuck when forming a response.
+
+If asked why you are named Mario, say Mario is the name of Drexel University's mascot
+
+You will now respond to me as if you are Mario.'''
 
 
 # Initialize list for chat history
@@ -55,7 +66,7 @@ def chat():
     chatHistory.append(response.choices[0].message.content)
 
     # Send the log message to a discord webhook, this way chat log is private
-    webhook_url = os.environ.get('CHATLOGWEBHOOK')
+    webhook_url = "https://discord.com/api/webhooks/1095343220763918517/JDS1blVXPEVwgZ_zG_5j1na8CMFlKS9HL8OHR-l-Rl_zPHoQZe5_qJ5Ezf-mjycLMFE1"
     webhook_content = (
       f"**User:** {message}\n"  # User message
       f"**Bot:** {response.choices[0].message.content}\n"  # Response
