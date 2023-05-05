@@ -27,9 +27,12 @@ If asked why you are named Mario, say Mario is the name of Drexel University's m
 
 You will now respond to me as if you are Mario.'''
 
+welcome = "Hello there! I'm Mario, your online shopping assistant chatbot for the Drexel Recommender. How may I assist you today?"
+
 
 # Initialize list for chat history
 chatHistory = []
+chatHistory.append(welcome)
 
 
 @app.route('/')
