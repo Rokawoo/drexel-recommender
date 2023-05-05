@@ -72,7 +72,9 @@
           <input class="cart" type="image" src="https://www.cs.drexel.edu/~ays36/CI102/img/cart.png" draggable="false" alt="cart">
         </form>
 
-        <button style="margin-left: -18px" onclick="/goToHome">Return Home</button>
+        <form action="/goBackHome" method="POST">
+            <button style="margin-left: -18px">Return Home</button>
+        </form>
         <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
       </div>
 
