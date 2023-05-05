@@ -13,7 +13,7 @@
       return true;
       }
     </script>
-    
+
     <style>
       body {
        background-size: cover;
@@ -69,7 +69,37 @@
         border-radius: 50%;
       }
     </style>
-    
+
+    <style>
+		.overlay {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.7);
+		}
+
+		.overlay img {
+			display: block;
+			margin: auto;
+			margin-top: 100px;
+			max-width: 80%;
+			max-height: 80%;
+		}
+
+		.thumbnail {
+			cursor: pointer;
+			transition: transform 0.2s;
+		}
+
+		.thumbnail:hover {
+			transform: scale(1.1);
+		}
+	</style>
 </head>
   <body style="background-image: url('https://www.cs.drexel.edu/~ays36/CI102/img/WhiteVector.png'); overflow-x:hidden; overflow-y:shown;">
      <div style="max-width: 1207px; margin: auto"> 
@@ -82,7 +112,9 @@
           <input class="cart" type="image" src="https://www.cs.drexel.edu/~ays36/CI102/img/cart.png" draggable="false" alt="cart">
         </form>
         
-        <button style="margin-left: -18px" onclick="/goBackHome">Return Home</button>
+        <form action="/goBackHome" method="POST">
+            <button style="margin-left: -18px">Return Home</button>
+        </form>
         <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
       </div>
       
@@ -132,7 +164,7 @@
         </div>
         
       </div>
-      
+
       <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 80px; min-height: calc(0vh - 50px);">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Output:</font></p>
         
@@ -147,25 +179,25 @@
         
         <center style="width: 99.7%; height: 446px; margin-top: -35px; float: left">
           <br>
-          <table>
+          <table style="font-family: arial; font-color: #000066; width: 100%; height: 100%; margin-top: -24px;">
             <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Weblinks</th>
+              <th style="font-size: 20px; border-bottom: 1px solid #000066">Name</th>
+              <th style="font-size: 20px; text-align: center; border-bottom: 1px solid #000066;">Price</th>
+              <th style="font-size: 20px; text-align: center; border-bottom: 1px solid #000066;">Weblinks</th>
               {% for (name, price, link, image) in everything %}
             </tr>
             <tr>
-              <td>{{name}}</td>
-              <td>{{price}}</td>
-                <td> <a href="{{link}}">Link to Website </a></td>
-               <td> <img src={{image}} width="30px" height="30px" alt="picture"> </td>
+              <td style="border-bottom: 1px solid #000066;">{{name}}</td>
+              <td style="border-bottom: 1px solid #000066;">${{price}}</td>
+              <td style="border-bottom: 1px solid #000066;"><a href="{{link}}">Link to Website</a></td>
+              <td style="border-bottom: 1px solid #000066;" class="thumbnail" onclick="showOverlay('{{image}}')"><img src={{image}} width="30px" height="30px" alt="picture"></td>
                 <form action="/addToCart" method="POST">
                     <td>
                         <input type="hidden" value="{{image}}" name="productImage">
                         <input type="hidden" value="{{price}}" name="productPrice">
                         <input type="hidden" value="{{name}}" name="productName">
                         <input type="hidden" value="{{link}}" name="productLink">
-                        <input type="submit" value="Add to Cart">
+                        <input style="width: 102px; height: 24px; background-color: #000066; color: white; margin: 4px 2px; font-size: 15px;" type="submit" value="Add to Cart">
                     </td>
                 </form>
             </tr>
@@ -176,4 +208,22 @@
       </div>
       
     </div>
+
+    <div id="overlay" class="overlay" onclick="hideOverlay()">
+		<img id="overlay-image" src="" alt="picture">
+	</div>
+
+	<script>
+		function showOverlay(imageUrl) {
+			var overlay = document.getElementById("overlay");
+			var overlayImage = document.getElementById("overlay-image");
+			overlayImage.src = imageUrl;
+			overlay.style.display = "block";
+		}
+
+		function hideOverlay() {
+			var overlay = document.getElementById("overlay");
+			overlay.style.display = "none";
+		}
+	</script>
   </body>
