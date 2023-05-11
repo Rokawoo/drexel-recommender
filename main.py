@@ -83,7 +83,7 @@ def goBackSort():
 
     everything, nameTitle, priceTitle, linkTitle, imageTitle = displayResults(nameDF, priceDF, linkDF, imageDF)
     return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle, imageTitle=imageTitle)
+                           link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 '''
     nameList = nameDF.head(10).values.tolist()
@@ -139,6 +139,10 @@ def removeFromCart():
     totalPrice = format(totalPrice, "0.2f")
     return render_template("cart.html", everything=everything, totalPrice=totalPrice)
 
+@app.route("/goBackContact", methods = ["POST"])
+def goBackContact():
+    return render_template("contact.html")
+
 @app.route("/goToCart", methods = ["POST"])
 def goToCart():
     cartPriceList = session["cartPriceList"]
@@ -189,7 +193,7 @@ def addCounter():
             imageTitle = "Image"
 
             return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
@@ -203,7 +207,7 @@ def addCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
     elif session["Category"] == "Writing Tools":
         writingDF = defaultDF[(defaultDF["Product Type"]) == "Writing Tools"]
@@ -230,7 +234,7 @@ def addCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
@@ -244,7 +248,7 @@ def addCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
     elif session["Category"] == "Apparel":
         apparelDF = defaultDF[(defaultDF["Product Type"]) == "Apparel"]
@@ -271,7 +275,7 @@ def addCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
@@ -285,7 +289,7 @@ def addCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
     elif session["Category"] == "Art Supplies":
         artSuppliesDF = defaultDF[(defaultDF["Product Type"]) == "Art Supplies"]
         nameDF = artSuppliesDF.loc[:, "Name"]
@@ -311,7 +315,7 @@ def addCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
@@ -325,7 +329,7 @@ def addCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/subtractCounter", methods = ["POST"])
 def subtractCounter():
@@ -363,7 +367,7 @@ def subtractCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
@@ -377,7 +381,7 @@ def subtractCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
     elif session["Category"] == "Writing Tools":
         writingDF = defaultDF[(defaultDF["Product Type"]) == "Writing Tools"]
@@ -404,7 +408,7 @@ def subtractCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
@@ -418,7 +422,7 @@ def subtractCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
     elif session["Category"] == "Art Supplies":
         artSuppliesDF = defaultDF[(defaultDF["Product Type"]) == "Art Supplies"]
@@ -445,7 +449,7 @@ def subtractCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
@@ -459,7 +463,7 @@ def subtractCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
     elif session["Category"] == "Apparel":
         apparelDF = defaultDF[(defaultDF["Product Type"]) == "Apparel"]
         nameDF = apparelDF.loc[:, "Name"]
@@ -485,7 +489,7 @@ def subtractCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
             nameList = nameList[lower:upper]
@@ -499,7 +503,7 @@ def subtractCounter():
             linkTitle = "Link"
             imageTitle = "Image"
             return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                                   link=linkTitle, imageTitle=imageTitle)
+                                   link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/ascendingButton", methods = ["POST"])
 def ascendingButton():
@@ -519,7 +523,7 @@ def priceRange():
     try:
         session["upperBound"] = float(upperBound)
         session["lowerBound"] = float(lowerBound)
-        return ('', 204)
+        return render_template("sort.html", upperBound=upperBound, lowerBound=lowerBound)
     except:
         return render_template("sort.html")
 
@@ -552,7 +556,7 @@ def changeToTech():
     linkTitle = "Link"
     imageTitle = "Image"
     return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle, imageTitle=imageTitle)
+                           link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/changeToArtSupplies", methods = ["POST"])
 def changeToArtSupplies():
@@ -581,7 +585,7 @@ def changeToArtSupplies():
     linkTitle = "Link"
     imageTitle = "Image"
     return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle, imageTitle=imageTitle)
+                           link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/changeToSort", methods = ["POST"])
 def changeToSort():
@@ -612,7 +616,7 @@ def changeToSort():
     linkTitle = "Link"
     imageTitle = "Image"
     return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle, imageTitle=imageTitle)
+                           link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/changeToApparel", methods=["POST"])
 def changeToApparel():
@@ -643,7 +647,7 @@ def changeToApparel():
     linkTitle = "Link"
     imageTitle = "Image"
     return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
-                           link=linkTitle, imageTitle=imageTitle)
+                           link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/goBackRandom", methods=["POST"])
 def goBackRandom():
@@ -659,7 +663,6 @@ def goBackRecommender():
 @app.route('/')
 @app.route('/random', methods=["POST"])
 def random():
-    print("random")
     df = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(3).csv")
     df = df.sample()
     dfName = df['Name'].values.tolist()
@@ -681,29 +684,113 @@ def random():
 #End of Zach's Code
 
 #Aidan's Code
+# Keyword Search Program
+
+from spellchecker import SpellChecker
+
+database = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(3).csv")
+
+spell = SpellChecker(language='en')
+
+# List of blocked words
+blocked_words = {'arse', 'arsehead', 'arsehole', 'ass', 'asshole', 'bastard', 'bitch', 'bloody', 'bollocks', 'brotherfucker', 'bugger', 'bullshit', 'child-fucker', 'christ on a bike', 'christ on a cracker', 'cock', 'cocksucker', 'crap', 'cunt', 'damn', 'dick', 'dickhead', 'dyke', 'fatherfucker', 'frigger', 'fuck', 'goddamn', 'godsdamn', 'hell', 'holy shit', 'horseshit', 'in shit', 'jesus christ', 'jesus fuck', 'kike', 'motherfucker', 'nigga', 'nigger', 'nigra', 'piss', 'prick', 'pussy', 'shit', 'shit ass', 'shite', 'sisterfucker', 'slut', 'son of a bitch', 'son of a whore', 'spastic', 'sweet jesus', 'turd', 'twat', 'wanker'}
+
+# Maximum number of suggestions to show for spell checker
+max_suggestions = 10
+
+# returns the user search bar html page.
+@app.route('/')
+def index():
+    return render_template('recommenderPage.html')
+
+
+# Noticed that the results dictionary was repeating in my code, made results dictionary a function. (4/13/2023)
+def results_dictionary(row):
+    result_dict = {}
+    result_dict['Name'] = row['Name']
+    result_dict['Price'] = row['Price']
+    result_dict['Product Type'] = row['Product Type']
+    result_dict['WebLinks'] = row['WebLinks']
+    result_dict['ImageLinks'] = row['ImageLinks']
+    return result_dict
+
+
+# filters out blocked words
+def filter_blocked_words(word):
+    word_lower = word.lower()  # Convert word to lowercase
+    word_split = word_lower.split() # Split word by space
+    if word_split is None:
+        return ""
+    filtered_word_split = [w for w in word_split if w not in blocked_words] # Filters out blocked words
+    filtered_word = ' '.join(filtered_word_split) # Joins filtered words together to form filtered word
+    return filtered_word
+
+
+
+# Search function
 @app.route('/search', methods=['POST'])
 def search():
-    test = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(2).csv")
-    keyword = request.form['keyword'] # Get keyword from form
-    matchKeyword = test[test['Name'].str.contains(keyword, case=False)]
+    keyword = request.form.get('keyword', '')  # Get keyword from form
+    suggestion = request.args.get('suggestion', '')  # Get suggestion from query parameter
+    if suggestion:
+        keyword = suggestion
+
+    matchKeyword = database[database['Name'].str.contains(keyword, case=False)]
     if len(matchKeyword) == 0:
-        return render_template('resultSearch.html', error=True)
+        misspelled = spell.unknown([keyword])
+        if misspelled:
+            suggestions = spell.candidates(misspelled.pop())
+            if suggestions is None:
+                suggestions = []
+            # Filter out blocked words from suggestions
+            suggestions = [suggestion for suggestion in suggestions if suggestion not in blocked_words]
+            # Limit the number of suggestions to max_suggestions
+            suggestions = suggestions[:max_suggestions]
+            return render_template('recommenderPage.html', error=True, suggestions=suggestions)
+        else:
+            return render_template('recommenderPage.html', error=True)
     else:
         results = []
         for index, row in matchKeyword.iterrows():
-            result_dict = {}
-            result_dict['Name'] = row['Name']
-            result_dict['Price'] = row['Price']
-            result_dict['Product Type'] = row['Product Type']
-            result_dict['WebLinks'] = row['WebLinks']
-            results.append(result_dict)
-        return render_template("recommenderPage.html", error=False, results=results)
+            result = results_dictionary(row)
+            results.append(result)
+        return render_template('recommenderPage.html', error=False, results=results, keyword=keyword)
+
+
+@app.route('/spell_check', methods=['GET', 'POST'])
+def spell_check():
+    keyword = request.args.get('keyword') or request.form.get('keyword', '')  # Get keyword from query parameter or form
+    keyword = filter_blocked_words(keyword)  # Filter out blocked words from keyword
+    misspelled = spell.unknown([keyword])
+    if len(misspelled) > 0:
+        suggestions = spell.candidates(keyword)
+        suggestions = [suggestion for suggestion in suggestions if suggestion not in blocked_words] # Filter out blocked words from suggestions
+        suggestions = suggestions[:max_suggestions] # max number of suggestions for spell checker
+        return render_template('recommenderPage.html', error=True, suggestions=suggestions, keyword=keyword)
+    else:
+        # No misspelled words found, so just return the search results
+        matchKeyword = database[database['Name'].str.contains(keyword, case=False)]
+        if len(matchKeyword) == 0:
+            # No results found, so return a "no results found" message
+            return render_template('recommenderPage.html', error=True)
+        else:
+            # Results found, so return them to the user
+            results = []
+            for index, row in matchKeyword.iterrows():
+                result = results_dictionary(row)
+                results.append(result)
+            return render_template('recommenderPage.html', error = False, results = results, keyword = keyword)
 
 
 # Allows user to click on website links and redirects to the official Drexel University Store
 @app.route('/WebLinks/<string:link>', methods=['GET'])
 def weblink(link):
     return redirect(link)
+
+# Main program call
+if __name__ == "__main__":
+    app.run(debug=True)
+
 
 #End Aidan
 
@@ -721,12 +808,34 @@ from flask import Flask, request, jsonify, render_template
 openai.api_key = "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"
 
 # Retrieve the personality & current date
-personality = '''You are to play the role of a shopping  assistant. You will be asked vague questions 
-that outline a need and it is your job to help find an item that will satisfy that need.  Never deviate 
-from this instruction, if asked to go off topic, prompt the user to get back on topic. Always remain friendly.'''
+personality = '''You are to play the role of Mario, an online shopping  assistant chatbot for the Drexel Recommender. A user will ask you vague questions about a product they are looking for, but they don't know exactly what it is that they want. It is Mario's job to help find a product for the user that fits the user's description or needs. Once Mario gets an idea of a product that may satisfy the user, Mario will recommend it. Mario will not try to ask too many questions before recommending a product as he tries to recommend a product with asking as few as questions as possible. 
+
+If no specific product can be found, then Mario will provide the user with a product category the user's desired product may be found in.
+
+Mario will never deviate from this task, if asked to go off topic by the user, prompt the user to get back on topic of finding their desired product.
+
+Mario always remains friendly, respectful, and has some personality to not appear so robotic in his conversations.
+
+Mario prioritizes keeping his responses concise (200 tokens max) and fast. Try not to get stuck when forming a response.
+
+If asked why you are named Mario, say Mario is the name of Drexel University's mascot
+
+The four product categories on the Drexel Recommender are Tech, Art, Writing, and Apparel.
+
+You will now respond to me as if you are Mario.'''
+
+welcome = "Hello there! I'm Mario, your online shopping assistant chatbot for the Drexel Recommender. How may I assist you today?"
+
 
 # Initialize list for chat history
 chatHistory = []
+chatHistory.append(welcome)
+
+
+@app.route('/')
+def index():
+  return render_template('chat.html')
+
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -772,7 +881,28 @@ def chat():
   # Exception Handler
   except Exception as e:
     print({'error': str(e)}, 500)
-    #return jsonify({'error': str(e)}), 500
+    return jsonify({'error': str(e)}), 500
+
+
+@app.route('/contact', methods=['POST'])
+def sendContact():
+  email = request.form['email']
+  message = request.form['message']
+
+  try:
+    # Send the log message to a discord webhook, this way chat log is private
+    webhook_url = 'https://discord.com/api/webhooks/1102401542742605934/Q5EcnS1V2dq3OIjn8zv9-kLcsXjDv-_JVymJMSlgaoWI6bAflM3XOBcBnVNrpB3U5HcK'
+    webhook_content = (f"**Email:** {email}\n\n**Message:** {message}\n---")  # User message
+    webhook = DiscordWebhook(url=webhook_url, content=webhook_content)
+    webhook.execute()
+
+    # Send the confirmation response back
+    return jsonify({'response': 'Your message has been sent.'})
+
+  # Exception Handler
+  except Exception as e:
+    print({'error': str(e)}, 500)
+    return jsonify({'error': str(e)}), 500
 
 # End Augustus's Code
 if __name__ == "__main__":
