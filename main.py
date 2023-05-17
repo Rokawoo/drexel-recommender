@@ -3,7 +3,6 @@ import pandas as pd
 import os
 
 #Start of Loren's Code
-imgFolder = os.path.join('static', 'img')
 
 df = pd.read_csv("https://raw.githubusercontent.com/22lorenlei/test/main/Database%20-%20Sheet1%20(3).csv")
 
@@ -14,8 +13,6 @@ descendingDF = df.sort_values(by="Price", ascending=False)
 app = Flask(__name__)
 app.secret_key = "asfasdfasdfasdfasdf"
 rows = len(df.axes[0])
-
-app.config['UPLOAD_FOLDER'] = imgFolder
 
 def displayResults(nameDF, priceDF, linkDF, imageDF):
     nameList = nameDF.head(10).values.tolist()
