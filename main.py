@@ -79,7 +79,7 @@ def goBackSort():
     imageDF = defaultDF.loc[:, "ImageLinks"]
 
     everything, nameTitle, priceTitle, linkTitle, imageTitle = displayResults(nameDF, priceDF, linkDF, imageDF)
-    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+    return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/addToCart", methods = ["POST"])
@@ -190,7 +190,7 @@ def addCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
     elif session["Category"] == "Writing Tools":
@@ -217,7 +217,7 @@ def addCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
@@ -231,7 +231,7 @@ def addCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
     elif session["Category"] == "Apparel":
@@ -258,7 +258,7 @@ def addCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
@@ -272,7 +272,7 @@ def addCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
     elif session["Category"] == "Art Supplies":
         artSuppliesDF = defaultDF[(defaultDF["Product Type"]) == "Art Supplies"]
@@ -298,7 +298,7 @@ def addCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
@@ -312,7 +312,7 @@ def addCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/subtractCounter", methods = ["POST"])
@@ -350,7 +350,7 @@ def subtractCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
@@ -364,7 +364,7 @@ def subtractCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
     elif session["Category"] == "Writing Tools":
@@ -391,7 +391,7 @@ def subtractCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
@@ -405,7 +405,7 @@ def subtractCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
     elif session["Category"] == "Art Supplies":
@@ -432,7 +432,7 @@ def subtractCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
@@ -446,7 +446,7 @@ def subtractCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
     elif session["Category"] == "Apparel":
         apparelDF = defaultDF[(defaultDF["Product Type"]) == "Apparel"]
@@ -472,7 +472,7 @@ def subtractCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
@@ -486,7 +486,7 @@ def subtractCounter():
             priceTitle = "Price"
             linkTitle = "Link"
             imageTitle = "Image"
-            return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/ascendingButton", methods = ["POST"])
@@ -507,9 +507,9 @@ def priceRange():
     try:
         session["upperBound"] = float(upperBound)
         session["lowerBound"] = float(lowerBound)
-        return render_template("sort.html", upperBound=upperBound, lowerBound=lowerBound)
+        return render_template("sortPage.html", upperBound=upperBound, lowerBound=lowerBound)
     except:
-        return render_template("sort.html")
+        return render_template("sortPage.html")
 
 @app.route("/changeToTech", methods = ["POST"])
 def changeToTech():
@@ -539,7 +539,7 @@ def changeToTech():
     priceTitle = "Price"
     linkTitle = "Link"
     imageTitle = "Image"
-    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+    return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/changeToArtSupplies", methods = ["POST"])
@@ -568,7 +568,7 @@ def changeToArtSupplies():
     priceTitle = "Price"
     linkTitle = "Link"
     imageTitle = "Image"
-    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+    return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/changeToSort", methods = ["POST"])
@@ -599,7 +599,7 @@ def changeToSort():
     priceTitle = "Price"
     linkTitle = "Link"
     imageTitle = "Image"
-    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+    return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/changeToApparel", methods=["POST"])
@@ -630,7 +630,7 @@ def changeToApparel():
     priceTitle = "Price"
     linkTitle = "Link"
     imageTitle = "Image"
-    return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
+    return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
 
 @app.route("/goBackRandom", methods=["POST"])

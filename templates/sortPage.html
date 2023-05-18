@@ -1,0 +1,229 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drexel Recommender</title>
+    <link rel="icon" type="image/x-icon" href="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelIcon.ico">
+
+    <script>
+      function isNumberKey(evt) {
+      var charCode = (evt.which) ? evt.which : evt.keyCode
+      if (charCode > 31 && (charCode < 48 || charCode > 57))
+      return false;
+      return true;
+      }
+    </script>
+
+    <style>
+      body {
+       background-size: cover;
+      }
+
+      button {
+        background-color: #000066;
+        color: white;
+        height: 48px;
+        width: 275px;
+        position:relative;
+        margin: 4px 2px;
+        margin-top: -128px;
+        left: 17.5%;
+        font-size: 35px;
+        float: left;
+        outline: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        font-size: 35px;
+        color: #ffdc6d;
+        transform: scale(1.05);
+        transition: outline .2s ease-in-out, font-size none;
+      }
+
+      #flask {
+         margin-top: 135px;
+      }
+
+      input[type=numbers] {
+        color: #000066;
+        width: 275px;
+        height: 34px;
+      }
+
+      .cart {
+        height: 75px;
+        width: 75px;
+        position: relative;
+        margin-top: -131px;
+        margin-left: 1150px;
+        top: 20px;
+        right: 20px;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .cart:hover {
+        outline: 3px solid #ffdc6d;
+        transform: scale(1.05);
+        border-radius: 50%;
+      }
+    </style>
+
+    <style>
+		.overlay {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.7);
+		}
+
+		.overlay img {
+			display: block;
+			margin: auto;
+			margin-top: 100px;
+			max-width: 80%;
+			max-height: 80%;
+		}
+
+		.thumbnail {
+			cursor: pointer;
+			transition: transform 0.2s;
+		}
+
+		.thumbnail:hover {
+			transform: scale(1.1);
+		}
+	</style>
+</head>
+  <body style="background-image: url('https://www.cs.drexel.edu/~ays36/CI102/img/WhiteVector.png'); overflow-x:hidden; overflow-y:shown;">
+     <div style="max-width: 1207px; margin: auto">
+      <div id="Banner" style="width:px; height:100px; margin:auto; padding-top:20px; background-color:#FFFFFF00;">
+        <img src="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelTopper.png" draggable="false" width="180.5px" height="192px" alt="Drexel Topper" style="margin-right:10px; margin-top:-20px; float:left;">
+        <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>Drexel S&nbsp;&nbsp;rter</font></p>
+        <img src="https://www.cs.drexel.edu/~ays36/CI102/img/star2.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 524px; margin-top:-215px; float:right;">
+
+        <form style="margin-top: -20px;" action="/goToCart" method="POST">
+          <input class="cart" type="image" src="https://www.cs.drexel.edu/~ays36/CI102/img/cart.png" draggable="false" alt="cart">
+        </form>
+
+        <form action="/goBackHome" method="POST">
+            <button style="margin-left: -18px">Return Home</button>
+        </form>
+        <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
+      </div>
+
+      <div id="Main" style="width:99.4%; height: 290px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/YellowPicnic400x.png'); margin-top: 80px;">
+        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Choose Desired Category:</font></p>
+        <div style="margin-top: 0px; margin-left: 29px;">
+          <form id="flask" style="margin-left: -245px;" action="/changeToTech" method="POST">
+            <button>Tech Products</button>
+          </form>
+          <form id="flask" style="margin-left: 100px;" action="/changeToArtSupplies" method="POST">
+            <button>Art Supplies</button>
+          </form>
+          <form id="flask" style="margin-left: 445px;" action="/changeToSort" method="POST">
+            <button>Writing Tools</button>
+          </form>
+          <form id="flask" style="margin-left: 790px;" action="/changeToApparel" method="POST">
+            <button>Apparel</button>
+          </form>
+        </div>
+
+
+        <div>
+          <p style="font-family:arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Choose Desired Order:</font></p>
+          <form id="flask" style="margin-top: 135px; margin-left: -216px" action="/ascendingButton" method="POST">
+            <button> Ascending </button>
+          </form>
+          <form id="flask" style="margin-top: 135px; margin-left: 129px" action="/descendingButton" method="POST">
+            <button> Descending </button>
+          </form>
+        </div>
+
+        <div style="margin-top: -125px; padding-left: 595px; float: left;">
+          <p style="font-family: arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Define Your Price Range:</font></p>
+          <form style="margin-top: -26px; padding-left: 9px" action="/priceRange" method="POST">
+            <label style="font-family: arial; font-color; #000066;">Lower Bound</label> <br>
+            <input syle="width: 20%" type="numbers" id="rangeInput" name="lowerBound" placeholder="$ Min:" onkeypress="return isNumberKey(event)" autocomplete="off"><br /><br />
+            <div style="float: right; margin-top: -71px; margin-left: 285px;">
+              <label style="font-family: arial; font-color; #000066">Upper Bound</label> <br>
+              <input syle="width: 20%; float:" type="numbers" id="rangeInput" name="upperBound" placeholder="$ Max:" onkeypress="return isNumberKey(event)" autocomplete="off"><br /><br />
+            </div>
+            <br>
+            <div style="float: right; margin-top: 0px; margin-left: 223px;">
+              <input id="sub" style="width: 100px; height: 34px; background-color: #000066; color: white; margin: 4px 2px;
+              margin-top: -5px; font-size: 25px;" type="submit" value="Submit" class="file_submit">
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 80px; min-height: calc(0vh - 50px);">
+        <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Output:</font></p>
+
+        <div style="float: left; margin-top: 0px; margin-left: 175px;">
+        <form action="/subtractCounter" method="POST">
+          <button style="width: 140px; height: 35px; font-size: 25px; margin-top: -64px; margin-left: -100px; float:;">Last Page</button>
+        </form>
+        <form action="/addCounter" method="POST">
+          <button style="width: 140px; height: 35px; font-size: 25px; margin-top: -80px; margin-left: 50px; float:;">Next Page</button>
+        </form>
+        </div>
+
+        <center style="width: 99.7%; height: 446px; margin-top: -35px; float: left">
+          <br>
+          <table style="font-family: arial; font-color: #000066; width: 100%; height: 100%; margin-top: -24px;">
+            <tr>
+              <th style="font-size: 20px; border-bottom: 1px solid #000066">Name</th>
+              <th style="font-size: 20px; text-align: center; border-bottom: 1px solid #000066;">Price</th>
+              <th style="font-size: 20px; text-align: center; border-bottom: 1px solid #000066;">Weblinks</th>
+              {% for (name, price, link, image) in everything %}
+            </tr>
+            <tr>
+              <td style="border-bottom: 1px solid #000066;">{{name}}</td>
+              <td style="border-bottom: 1px solid #000066;">${{price}}</td>
+              <td style="border-bottom: 1px solid #000066;"><a href="{{link}}">Link to Website</a></td>
+              <td style="border-bottom: 1px solid #000066;" class="thumbnail" onclick="showOverlay('{{image}}')"><img src={{image}} width="30px" height="30px" alt="picture"></td>
+                <form action="/addToCart" method="POST">
+                    <td>
+                        <input type="hidden" value="{{image}}" name="productImage">
+                        <input type="hidden" value="{{price}}" name="productPrice">
+                        <input type="hidden" value="{{name}}" name="productName">
+                        <input type="hidden" value="{{link}}" name="productLink">
+                        <input style="width: 102px; height: 24px; background-color: #000066; color: white; margin: 4px 2px; font-size: 15px;" type="submit" value="Add to Cart">
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+          </table>
+        </center>
+
+      </div>
+
+    </div>
+
+    <div id="overlay" class="overlay" onclick="hideOverlay()">
+		<img id="overlay-image" src="" alt="picture">
+	</div>
+
+	<script>
+		function showOverlay(imageUrl) {
+			var overlay = document.getElementById("overlay");
+			var overlayImage = document.getElementById("overlay-image");
+			overlayImage.src = imageUrl;
+			overlay.style.display = "block";
+		}
+
+		function hideOverlay() {
+			var overlay = document.getElementById("overlay");
+			overlay.style.display = "none";
+		}
+	</script>
+  </body>
