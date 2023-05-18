@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, session, url_for, request
 import pandas as pd
-import os
+
 
 #Start of Loren's Code
 
@@ -81,19 +81,6 @@ def goBackSort():
     everything, nameTitle, priceTitle, linkTitle, imageTitle = displayResults(nameDF, priceDF, linkDF, imageDF)
     return render_template("sort.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
-
-'''
-    nameList = nameDF.head(10).values.tolist()
-    priceList = priceDF.head(10).values.tolist()
-    linkList = linkDF.head(10).values.tolist()
-    imageList = imageDF.head(10).values.tolist()
-
-    everything = zip(nameList, priceList, linkList, imageList)
-    nameTitle = "Name"
-    priceTitle = "Price"
-    linkTitle = "Link"
-    imageTitle = "Image"
-'''
 
 @app.route("/addToCart", methods = ["POST"])
 def addToCart():
