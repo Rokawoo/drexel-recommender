@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="Removed an unnecessary comment and an import statement that was not needed.">
+    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KeyWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/KeyWeb.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/random.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/random.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resultSearch.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resultSearch.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sortPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sortPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sortPageTemp.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sortPageTemp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/writingToolsPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/writingToolsPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/random.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/random.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +16,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -33,13 +31,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/22lor/PycharmProjects/pythonProject2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/22lor/PycharmProjects/pythonProject2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\22lor\PycharmProjects\shopping-ai\templates" />

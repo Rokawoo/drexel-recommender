@@ -635,11 +635,11 @@ def changeToApparel():
 
 @app.route("/goBackRandom", methods=["POST"])
 def goBackRandom():
-    return render_template("randomPage.html")
+    return render_template("random.html")
 
 @app.route("/goBackRecommender", methods=["POST"])
 def goBackRecommender():
-    return render_template("recommenderPage.html")
+    return render_template("KeyWeb.html")
 
 #End of Loren's Code
 
@@ -662,7 +662,7 @@ def random():
     imageTitle = "Image"
     categoryTitle = "Category"
 
-    return render_template('randomPage.html', everything=everything, name=nameTitle, price=priceTitle,
+    return render_template('random.html', everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle, categoryTitle=categoryTitle)
 
 #End of Zach's Code
@@ -685,7 +685,7 @@ max_suggestions = 10
 # returns the user search bar html page.
 @app.route('/')
 def index():
-    return render_template('recommenderPage.html')
+    return render_template('KeyWeb.html')
 
 
 # Noticed that the results dictionary was repeating in my code, made results dictionary a function. (4/13/2023)
@@ -730,15 +730,15 @@ def search():
             suggestions = [suggestion for suggestion in suggestions if suggestion not in blocked_words]
             # Limit the number of suggestions to max_suggestions
             suggestions = suggestions[:max_suggestions]
-            return render_template('recommenderPage.html', error=True, suggestions=suggestions)
+            return render_template('KeyWeb.html', error=True, suggestions=suggestions)
         else:
-            return render_template('recommenderPage.html', error=True)
+            return render_template('KeyWeb.html', error=True)
     else:
         results = []
         for index, row in matchKeyword.iterrows():
             result = results_dictionary(row)
             results.append(result)
-        return render_template('recommenderPage.html', error=False, results=results, keyword=keyword)
+        return render_template('KeyWeb.html', error=False, results=results, keyword=keyword)
 
 
 @app.route('/spell_check', methods=['GET', 'POST'])
@@ -750,20 +750,20 @@ def spell_check():
         suggestions = spell.candidates(keyword)
         suggestions = [suggestion for suggestion in suggestions if suggestion not in blocked_words] # Filter out blocked words from suggestions
         suggestions = suggestions[:max_suggestions] # max number of suggestions for spell checker
-        return render_template('recommenderPage.html', error=True, suggestions=suggestions, keyword=keyword)
+        return render_template('KeyWeb.html', error=True, suggestions=suggestions, keyword=keyword)
     else:
         # No misspelled words found, so just return the search results
         matchKeyword = database[database['Name'].str.contains(keyword, case=False)]
         if len(matchKeyword) == 0:
             # No results found, so return a "no results found" message
-            return render_template('recommenderPage.html', error=True)
+            return render_template('KeyWeb.html', error=True)
         else:
             # Results found, so return them to the user
             results = []
             for index, row in matchKeyword.iterrows():
                 result = results_dictionary(row)
                 results.append(result)
-            return render_template('recommenderPage.html', error = False, results = results, keyword = keyword)
+            return render_template('KeyWeb.html', error = False, results = results, keyword = keyword)
 
 
 # Allows user to click on website links and redirects to the official Drexel University Store
