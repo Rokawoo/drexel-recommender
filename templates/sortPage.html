@@ -68,6 +68,16 @@
         transform: scale(1.05);
         border-radius: 50%;
       }
+      #test {
+        background-color: #000066
+        font-color: #FFFFFF
+      }
+      #test:hover {
+        outline: 3px solid #000066;
+        transform: scale(1.10)
+        border-radius: 50%
+        transition: outline .2s ease-in-out, font-size none;
+      }
     </style>
 
     <style>
@@ -150,15 +160,19 @@
           <p style="font-family: arial; font-size:30px; margin-top: -45px; padding-left:5px"><font color=#000066>Define Your Price Range:</font></p>
           <form style="margin-top: -26px; padding-left: 9px" action="/priceRange" method="POST">
             <label style="font-family: arial; font-color; #000066;">Lower Bound</label> <br>
-            <input syle="width: 20%" type="numbers" id="rangeInput" name="lowerBound" placeholder="$ Min:" onkeypress="return isNumberKey(event)" autocomplete="off"><br /><br />
+            <input style="width: 40%" type="numbers" id="rangeInput" name="lowerBound" placeholder="$ Min:" onkeypress="return isNumberKey(event)" autocomplete="off"><br /><br />
             <div style="float: right; margin-top: -71px; margin-left: 285px;">
               <label style="font-family: arial; font-color; #000066">Upper Bound</label> <br>
-              <input syle="width: 20%; float:" type="numbers" id="rangeInput" name="upperBound" placeholder="$ Max:" onkeypress="return isNumberKey(event)" autocomplete="off"><br /><br />
+              <input style="width: 110%;" type="numbers" id="rangeInput" name="upperBound" placeholder="$ Max:" onkeypress="return isNumberKey(event)" autocomplete="off"><br /><br />
             </div>
             <br>
             <div style="float: right; margin-top: 0px; margin-left: 223px;">
-              <input id="sub" style="width: 100px; height: 34px; background-color: #000066; color: white; margin: 4px 2px;
-              margin-top: -5px; font-size: 25px;" type="submit" value="Submit" class="file_submit">
+              <form action="/priceRange" method="POST">
+                <button style="width: 100px; height: 34px; background-color: #000066; color: white; margin: 4px 2px;
+              margin-top: -5px; font-size: 25px;">
+                Submit
+                </button>
+              </form>
             </div>
           </form>
         </div>
@@ -191,15 +205,15 @@
               <td style="border-bottom: 1px solid #000066;">${{price}}</td>
               <td style="border-bottom: 1px solid #000066;"><a href="{{link}}">Link to Website</a></td>
               <td style="border-bottom: 1px solid #000066;" class="thumbnail" onclick="showOverlay('{{image}}')"><img src={{image}} width="30px" height="30px" alt="picture"></td>
+              <td>
                 <form action="/addToCart" method="POST">
-                    <td>
-                        <input type="hidden" value="{{image}}" name="productImage">
-                        <input type="hidden" value="{{price}}" name="productPrice">
-                        <input type="hidden" value="{{name}}" name="productName">
-                        <input type="hidden" value="{{link}}" name="productLink">
-                        <input style="width: 102px; height: 24px; background-color: #000066; color: white; margin: 4px 2px; font-size: 15px;" type="submit" value="Add to Cart">
-                    </td>
+                  <input type="hidden" value="{{image}}" name="productImage">
+                  <input type="hidden" value="{{price}}" name="productPrice">
+                  <input type="hidden" value="{{name}}" name="productName">
+                  <input type="hidden" value="{{link}}" name="productLink">
+                  <input type="submit" value="Add To Cart" id="test">
                 </form>
+              </td>
             </tr>
             {% endfor %}
           </table>

@@ -64,12 +64,24 @@
         <p style="font-size:30px; color:#000066; font-family: Arial;"> <span style = "font-weight: bold;">Price:</span> ${{price}}</p>
         <p style="font-size:30px; color:#000066; font-family: Arial;"> <span style = "font-weight: bold;">Category:</span> {{category}}</p>
         <a style="font-size:30px; color:#000066; font-family: Arial;" href="{{link}}" target="_blank" > <span style = "font-weight: bold;">Click to see product on Drexel Store</span> </a>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
           <form action="/addToCart" method="POST">
             <input type="hidden" value="{{image}}" name="productImage">
             <input type="hidden" value="{{price}}" name="productPrice">
             <input type="hidden" value="{{name}}" name="productName">
             <input type="hidden" value="{{link}}" name="productLink">
-            <input style="width: 102px; height: 24px; background-color: #000066; color: white; margin: 4px 2px; font-size: 15px;" type="submit" value="Add to Cart">
+            <button>
+              <input style="width: 102px; height: 24px; background-color: #000066; color: white; margin: 4px 2px; font-size: 15px;" type="hidden">
+              Add to Cart
+            </button>
           </form>
         </div>
         {% endfor %}

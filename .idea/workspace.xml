@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="">
+    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="I moved KeyWeb.html to the templates folder. I altered random.html to have the shopping cart feature added. However, there still exists problems with the CSS. I also was trying to update the keyweb.html with the shopping cart features but there are lots of coding logic that doesn't make sense. Will try to notify Aidan about this">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KeyWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/KeyWeb.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/random.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/random.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sortPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sortPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Loren's_Testing2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,12 +80,20 @@
       <option name="project" value="LOCAL" />
       <updated>1684424836684</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="I moved KeyWeb.html to the templates folder. I altered random.html to have the shopping cart feature added. However, there still exists problems with the CSS. I also was trying to update the keyweb.html with the shopping cart features but there are lots of coding logic that doesn't make sense. Will try to notify Aidan about this">
+      <created>1684611304273</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684611304273</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated main.py by removing the static image folder that we do not need." />
     <MESSAGE value="Removed an unnecessary comment and an import statement that was not needed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed an unnecessary comment and an import statement that was not needed." />
+    <MESSAGE value="I moved KeyWeb.html to the templates folder. I altered random.html to have the shopping cart feature added. However, there still exists problems with the CSS. I also was trying to update the keyweb.html with the shopping cart features but there are lots of coding logic that doesn't make sense. Will try to notify Aidan about this" />
+    <option name="LAST_COMMIT_MESSAGE" value="I moved KeyWeb.html to the templates folder. I altered random.html to have the shopping cart feature added. However, there still exists problems with the CSS. I also was trying to update the keyweb.html with the shopping cart features but there are lots of coding logic that doesn't make sense. Will try to notify Aidan about this" />
   </component>
 </project>

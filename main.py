@@ -136,7 +136,6 @@ def goToCart():
     everything = zip(cartPriceList, cartNameList, cartImageList, cartLinkList)
     totalPrice = session["cartPrice"]
     totalPrice = format(totalPrice, "0.2f")
-    print(session["cartLinkList"])
     return render_template("cart.html", everything=everything, totalPrice=totalPrice)
 
 @app.route("/addCounter", methods = ["POST"])
@@ -176,7 +175,7 @@ def addCounter():
             linkTitle = "Link"
             imageTitle = "Image"
 
-            return render_template("writingToolsPage.html", everything=everything, name=nameTitle, price=priceTitle,
+            return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                                    link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
         elif len(nameList) > 10:
 
@@ -507,7 +506,27 @@ def priceRange():
     try:
         session["upperBound"] = float(upperBound)
         session["lowerBound"] = float(lowerBound)
-        return render_template("sortPage.html", upperBound=upperBound, lowerBound=lowerBound)
+        defaultDF = df
+        defaultDF = defaultDF[(defaultDF["Price"] >= session["lowerBound"]) & (defaultDF["Price"] <= session["upperBound"])]
+        defaultDF = defaultDF[(defaultDF["Product Type"]) == session["Category"]]
+
+        nameDF = defaultDF.loc[:, "Name"]
+        priceDF = defaultDF.loc[:, "Price"]
+        linkDF = defaultDF.loc[:, "WebLinks"]
+        imageDF = defaultDF.loc[:, "ImageLinks"]
+
+        nameList = nameDF.head(10).values.tolist()
+        priceList = priceDF.head(10).values.tolist()
+        linkList = linkDF.head(10).values.tolist()
+        imageList = imageDF.head(10).values.tolist()
+
+        everything = zip(nameList, priceList, linkList, imageList)
+        nameTitle = "Name"
+        priceTitle = "Price"
+        linkTitle = "Link"
+        imageTitle = "Image"
+        return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
+                           link=linkTitle, imageTitle=imageTitle, upperBound=session["upperBound"], lowerBound=session["lowerBound"])
     except:
         return render_template("sortPage.html")
 
