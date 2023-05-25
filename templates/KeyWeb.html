@@ -2,6 +2,18 @@
 <html>
   <head>
     <title>Search Prototype</title>
+    <style>
+      #test {
+        background-color: #000066
+        font-color: #FFFFFF
+      }
+      #test:hover {
+        outline: 3px solid #000066;
+        transform: scale(1.10)
+        border-radius: 50%
+        transition: outline .2s ease-in-out, font-size none;
+      }
+    </style>
   </head>
   <body>
     <h1>Search</h1>
@@ -30,6 +42,15 @@
               <td>{{ item['Product Type'] }}</td>
               <td><a href="{{ item['WebLinks'] }}" target="_blank">{{ item['WebLinks'] }}</a></td>
               <td><img src="{{ item['ImageLinks'] }}" target="_blank" width="30px" height="30px"></td>
+              <td>
+                <form action="/addToCart" method="POST">
+                  <input type="hidden" value="{{item['ImageLinks']}}" name="productImage">
+                  <input type="hidden" value="{{item['Price']}}" name="productPrice">
+                  <input type="hidden" value="{{item['Name']}}" name="productName">
+                  <input type="hidden" value="{{item['WebLinks']}}" name="productLink">
+                  <input type="submit" value="Add To Cart" id="test">
+                </form>
+              </td>
             </tr>
             {% endfor %}
           </tbody>
@@ -51,9 +72,13 @@
         {% endfor %}
       </ul>
     {% endif %}
-
+<!--
     <form>
       <button type="button" onclick="window.history.back()">Go back</button>
     </form>
+    -->
+  <form action="/goBackHome" method="POST">
+    <button> Home </button>
+  </form>
   </body>
 </html>
