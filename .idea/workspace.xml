@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="There were a couple of issues that I have found with the buttons. Particularly, no response/not highlighting. I added the necessary features to make them consistent. Additionally, I have found bugs with the buttons where it would refresh the page but have nothing on it. I fixed the submit button and modified the add to cart buttons, but I have yet to find a more efficient solution for the others.">
+    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="Made edits to KeyWeb.html to allow for a functional shopping feature. The bug that was referenced in the activity report in KeyWeb.html was that every time I went back, the cache was cleared. I just changed the button to avoid that issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/KeyWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/KeyWeb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sortPageTemp.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sortPageTemp.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,14 +96,33 @@
       <option name="project" value="LOCAL" />
       <updated>1684699200805</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Made edits to KeyWeb.html to allow for a functional shopping feature. The bug that was referenced in the activity report in KeyWeb.html was that every time I went back, the cache was cleared. I just changed the button to avoid that issue">
+      <created>1684974271157</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684974271157</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated main.py by removing the static image folder that we do not need." />
     <MESSAGE value="Removed an unnecessary comment and an import statement that was not needed." />
     <MESSAGE value="I moved KeyWeb.html to the templates folder. I altered random.html to have the shopping cart feature added. However, there still exists problems with the CSS. I also was trying to update the keyweb.html with the shopping cart features but there are lots of coding logic that doesn't make sense. Will try to notify Aidan about this" />
     <MESSAGE value="There were a couple of issues that I have found with the buttons. Particularly, no response/not highlighting. I added the necessary features to make them consistent. Additionally, I have found bugs with the buttons where it would refresh the page but have nothing on it. I fixed the submit button and modified the add to cart buttons, but I have yet to find a more efficient solution for the others." />
-    <option name="LAST_COMMIT_MESSAGE" value="There were a couple of issues that I have found with the buttons. Particularly, no response/not highlighting. I added the necessary features to make them consistent. Additionally, I have found bugs with the buttons where it would refresh the page but have nothing on it. I fixed the submit button and modified the add to cart buttons, but I have yet to find a more efficient solution for the others." />
+    <MESSAGE value="Made edits to KeyWeb.html to allow for a functional shopping feature. The bug that was referenced in the activity report in KeyWeb.html was that every time I went back, the cache was cleared. I just changed the button to avoid that issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made edits to KeyWeb.html to allow for a functional shopping feature. The bug that was referenced in the activity report in KeyWeb.html was that every time I went back, the cache was cleared. I just changed the button to avoid that issue" />
   </component>
 </project>

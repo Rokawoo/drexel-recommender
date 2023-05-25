@@ -887,8 +887,9 @@ def chat():
     return jsonify({'error': str(e)}), 500
 
 
-@app.route('/contact', methods=['POST'])
+@app.route('/sendContact', methods=['POST'])
 def sendContact():
+  print("asdf")
   email = request.form['email']
   message = request.form['message']
 

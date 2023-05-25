@@ -70,18 +70,18 @@
         <p style="font-size:120px; margin-top:-30px; background: rgba(255, 255, 255, 0)"><font color=#000066>C&nbsp;&nbsp;ntact Us</font></p>
         <img src="https://www.cs.drexel.edu/~ays36/CI102/img/star2.gif" draggable="false" width="80px" height="80px" alt="Star" style="margin-right: 867px; margin-top:-215px; float:right;">
 
-        <form style="margin-top: -20px;" action="your_url_here" method="POST">
+        <form style="margin-top: -20px;" action="/goToCart" method="POST">
           <input class="cart" type="image" src="https://www.cs.drexel.edu/~ays36/CI102/img/cart.png" draggable="false" alt="cart">
         </form>
 
-        <button style="margin-left: -18px" onclick="window.location.href='https://rokawoo.neocities.org/CI102/';">Return Home</button>
+        <button style="margin-left: -18px" action="/goBackHome" >Return Home</button>
         <button style="margin-left: 275px" onclick="window.location.reload();" method="POST">Clear Inputs</button>
       </div>
 
       <div id="Main" style="width:99.4%; height: 395px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/YellowPicnic400x.png'); margin-top: 80px;">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px"><font color=#000066>Send us a message! Include your contact email so we can get back to you.</font></p>
 
-        <form id="contactForm" class="grid" style="padding-left: 10px; margin-top: 5px;" action="/contact" method="POST">
+        <form id="contactForm" class="grid" style="padding-left: 10px; margin-top: 5px;" action="/sendContact" method="POST">
             <p style="font-family:arial; font-size: 26px; margin-top:auto; padding-left: 5px; margin-top: -20px"><font color=#000066>Email:</font></p>
           <input type="email" id="emailInput" name="email" placeholder="example@email.com" required autocomplete="off" style="width: 300px; height: 36px; font-size: 18px; margin: 4px 2px; margin-top: -28px">
             <p style="font-family:arial; font-size: 26px; margin-top:auto; padding-left: 5px; margin-top: 10px"><font color=#000066>Message:</font></p>
@@ -94,7 +94,7 @@
 
     </div>
     <script>
-      $(document).ready(function() {
+$(document).ready(function() {
       $('#contactForm').submit(function(event) {
         event.preventDefault(); // Prevents default form submission
 
