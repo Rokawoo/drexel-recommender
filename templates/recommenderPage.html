@@ -36,7 +36,8 @@
         font-size: 35px;
         color: #ffdc6d;
         transform: scale(1.05);
-        transition: outline 0.2s ease-in-out, font-size none;
+        transition: outline 0.2s ease-in-out,
+        font-size: none;
       }
 
       .cart {
@@ -80,68 +81,67 @@
 
         <form style="padding-left:5px" action="{{ url_for('search') }}" method="post">
           <label for="input"><!-- no label --></label>
-          <input syle="width: 100%" type="text" id="input" name="keyword" placeholder="Search..." required autocomplete="off"><br /><br />
+          <input style="width: 100%" type="text" id="input" name="keyword" placeholder="Search..." required autocomplete="off"><br /><br />
           <input style="background-color: #000066; color: white; margin: 4px 2px;" type="submit" value="Submit">
         </form>
 
       </div>
 
-      <div id="Output" style="width:99.4%; height:450px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 80px; min-height: calc(100vh - 50px);">
+      <div id="Output" style="width:99.4%; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 80px; min-height: calc(100vh - 50px);">
         <p style="font-family:arial; font-size:30px; margin-top:auto; padding-left:5px; margin-right: 0px; margin-top:-40px;"><font color=#000066>Output:</font></p>
 
-        <center style="width: 99.7%; height: 446px; margin-top: -25px">
-          {% if not error %}
-          {% if results %}
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Product Type</th>
-                  <th>Weblinks</th>
-                  <th>Images</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for item in results %}
-                <tr>
-                  <td>{{ item['Name'] }}</td>
-                  <td>{{ item['Price'] }}</td>
-                  <td>{{ item['Product Type'] }}</td>
-                  <td><a href="{{ item['WebLinks'] }}" target="_blank">{{ item['WebLinks'] }}</a></td>
-                  <td><img src="{{ item['ImageLinks'] }}" target="_blank" width="30px" height="30px"></td>
-                  <td>
-                    <form action="/addToCart" method="POST">
-                      <input type="hidden" value="{{item['ImageLinks']}}" name="productImage">
-                      <input type="hidden" value="{{item['Price']}}" name="productPrice">
-                      <input type="hidden" value="{{item['Name']}}" name="productName">
-                      <input type="hidden" value="{{item['WebLinks']}}" name="productLink">
-                      <input type="submit" value="Add To Cart" id="test">
-                    </form>
-                  </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          {% else %}
-            {% if suggestions %}
-              <p>Did you mean {{ suggestions|join(', ') }}?</p>
-            {% else %}
-              <p>No results found.</p>
-          {% endif %}
-          {% endif %}
-          {% endif %}
+       <center style="width: 99.7%; height: 446px; margin-top: -0px; float: left">
+  {% if not error %}
+    {% if results %}
+      <table style="font-family: arial; font-color: #000066; width: 100%; height: 100%; margin-top: -24px;">
+        <tr>
+          <th style="font-size: 20px; border-bottom: 1px solid #000066">Name</th>
+          <th style="font-size: 20px; text-align: center; border-bottom: 1px solid #000066;">Price</th>
+          <th style="font-size: 20px; text-align: center; border-bottom: 1px solid #000066;">Product Type</th>
+          <th style="font-size: 20px; text-align: center; border-bottom: 1px solid #000066;">Weblinks</th>
+          <th style="font-size: 20px; text-align: center; border-bottom: 1px solid #000066;">Images</th>
+        </tr>
+        <tbody>
+          {% for item in results %}
+          <tr>
+            <td style="border-bottom: 1px solid #000066;">{{ item['Name'] }}</td>
+            <td style="border-bottom: 1px solid #000066;">{{ item['Price'] }}</td>
+            <td style="border-bottom: 1px solid #000066;">{{ item['Product Type'] }}</td>
+            <td style="border-bottom: 1px solid #000066;"><a href="{{ item['WebLinks'] }}" target="_blank">{{ item['WebLinks'] }}</a></td>
+            <td style="border-bottom: 1px solid #000066;"><img src="{{ item['ImageLinks'] }}" target="_blank" width="30px" height="30px"></td>
+            <td>
+              <form action="/addToCart" method="POST">
+                <input type="hidden" value="{{ item['ImageLinks'] }}" name="productImage">
+                <input type="hidden" value="{{ item['Price'] }}" name="productPrice">
+                <input type="hidden" value="{{ item['Name'] }}" name="productName">
+                <input type="hidden" value="{{ item['WebLinks'] }}" name="productLink">
+                <input type="submit" value="Add To Cart" id="test">
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p style="font-size: 20px;">No results found.</p>
+      {% if suggestions %}
+        <p style="font-size: 20px;">Did you mean {{ suggestions|join(', ') }}?</p>
+      {% endif %}
+    {% endif %}
+  {% else %}
+        <p style="font-size: 35px; font-color: #000066; margin-top: -15px;">No results found.</p>
+  {% endif %}
 
+  {% if suggestions %}
+    <p style="font-size: 35px; font-color: #000066; margin-top: -40px; padding-right: 1000px;">Did you mean:</p>
+    <ul>
+      {% for suggestion in suggestions %}
+      <li><a style="font-size: 25px; padding-right: 1000px;" href="{{ url_for('spell_check', keyword=suggestion) }}">{{ suggestion }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</center>
 
-          {% if suggestions %}
-            <p>Did you mean:</p>
-            <ul>
-              {% for suggestion in suggestions %}
-              <li><a href="{{ url_for('spell_check', keyword=suggestion) }}">{{ suggestion }}</a></li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        </center>
 
       </div>
     </div>
