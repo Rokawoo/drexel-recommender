@@ -83,7 +83,9 @@ def goBackSort():
     return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle)
 
-
+@app.route("/goBackUserManual", methods=["POST"])
+def goBackUserManual():
+    return render_template("userManual.html")
 @app.route("/addToCart", methods = ["POST"])
 def addToCart():
     productPrice = request.form["productPrice"]
