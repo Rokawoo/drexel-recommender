@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="Created the html template for the user manual, which has the working navigation buttons and consistent aesthetics and design.">
+    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="Updated random.html to have the complete features of the shopping cart (add to cart and cart button). I also removed the user manual page as discussed in meeting.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tempMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/tempMain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/KeyWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/KeyWeb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/random.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/random.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685500597423</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated random.html to have the complete features of the shopping cart (add to cart and cart button). I also removed the user manual page as discussed in meeting.">
+      <created>1685585527625</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685585527625</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +150,7 @@
     <MESSAGE value="Made edits to KeyWeb.html to allow for a functional shopping feature. The bug that was referenced in the activity report in KeyWeb.html was that every time I went back, the cache was cleared. I just changed the button to avoid that issue" />
     <MESSAGE value="Made changes to Augustus's edits on KeyWeb.html to match the consistent design aesthetics." />
     <MESSAGE value="Created the html template for the user manual, which has the working navigation buttons and consistent aesthetics and design." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the html template for the user manual, which has the working navigation buttons and consistent aesthetics and design." />
+    <MESSAGE value="Updated random.html to have the complete features of the shopping cart (add to cart and cart button). I also removed the user manual page as discussed in meeting." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated random.html to have the complete features of the shopping cart (add to cart and cart button). I also removed the user manual page as discussed in meeting." />
   </component>
 </project>
