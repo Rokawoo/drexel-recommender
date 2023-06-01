@@ -770,7 +770,7 @@ from flask import Flask, request, jsonify, render_template
 
 # set app
 # Set up the OpenAI API key
-openai.api_key = "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"
+openai.api_key = "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"
 
 # Retrieve the personality & current date
 personality = '''You are to play the role of Mario, an online shopping  assistant chatbot for the Drexel Recommender. A user will ask you vague questions about a product they are looking for, but they don't know exactly what it is that they want. It is Mario's job to help find a product for the user that fits the user's description or needs. Once Mario gets an idea of a product that may satisfy the user, Mario will recommend it. Mario will not try to ask too many questions before recommending a product as he tries to recommend a product with asking as few as questions as possible. 

@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="Added user manual link to home.html">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
+    <list default="true" id="6a493ab3-9484-40c8-bcc3-acf49e3a4c83" name="Changes" comment="added link for user manual to home.html">
+      <change beforePath="$PROJECT_DIR$/tempMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/tempMain.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685632564779</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added link for user manual to home.html">
+      <created>1685632755756</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1685632755756</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +165,7 @@
     <MESSAGE value="Created the html template for the user manual, which has the working navigation buttons and consistent aesthetics and design." />
     <MESSAGE value="Updated random.html to have the complete features of the shopping cart (add to cart and cart button). I also removed the user manual page as discussed in meeting." />
     <MESSAGE value="Added user manual link to home.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added user manual link to home.html" />
+    <MESSAGE value="added link for user manual to home.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="added link for user manual to home.html" />
   </component>
 </project>
