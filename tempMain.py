@@ -83,9 +83,6 @@ def goBackSort():
     return render_template("sortPage.html", everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle)
 
-@app.route("/goBackUserManual", methods=["POST"])
-def goBackUserManual():
-    return render_template("userManual.html")
 @app.route("/addToCart", methods = ["POST"])
 def addToCart():
     productPrice = request.form["productPrice"]
@@ -639,7 +636,7 @@ def changeToApparel():
 
 @app.route("/goBackRandom", methods=["POST"])
 def goBackRandom():
-    return render_template("randomPage.html")
+    return render_template("random.html")
 
 @app.route("/goBackRecommender", methods=["POST"])
 def goBackRecommender():
@@ -667,7 +664,7 @@ def random():
     imageTitle = "Image"
     categoryTitle = "Category"
 
-    return render_template('randomPage.html', everything=everything, name=nameTitle, price=priceTitle,
+    return render_template('random.html', everything=everything, name=nameTitle, price=priceTitle,
                            link=linkTitle, imageTitle=imageTitle, categoryTitle=categoryTitle)
 
 #End of Zach's Code

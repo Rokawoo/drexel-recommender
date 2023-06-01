@@ -834,7 +834,6 @@ welcome = "Hello there! I'm Mario, your online shopping assistant chatbot for th
 chatHistory = []
 chatHistory.append(welcome)
 
-
 @app.route('/')
 def index():
   return render_template('chat.html')
@@ -889,24 +888,23 @@ def chat():
 
 @app.route('/sendContact', methods=['POST'])
 def sendContact():
-  print("asdf")
-  email = request.form['email']
-  message = request.form['message']
+    email = request.form['email']
+    message = request.form['message']
+    print("asdf")
+    try:
+        # Send the log message to a discord webhook, this way chat log is private
+        webhook_url = 'https://discord.com/api/webhooks/1102401542742605934/Q5EcnS1V2dq3OIjn8zv9-kLcsXjDv-_JVymJMSlgaoWI6bAflM3XOBcBnVNrpB3U5HcK'
+        webhook_content = (f"**Email:** {email}\n\n**Message:** {message}\n---")  # User message
+        webhook = DiscordWebhook(url=webhook_url, content=webhook_content)
+        webhook.execute()
 
-  try:
-    # Send the log message to a discord webhook, this way chat log is private
-    webhook_url = 'https://discord.com/api/webhooks/1102401542742605934/Q5EcnS1V2dq3OIjn8zv9-kLcsXjDv-_JVymJMSlgaoWI6bAflM3XOBcBnVNrpB3U5HcK'
-    webhook_content = (f"**Email:** {email}\n\n**Message:** {message}\n---")  # User message
-    webhook = DiscordWebhook(url=webhook_url, content=webhook_content)
-    webhook.execute()
+        # Send the confirmation response back
+        return jsonify({'response': 'Your message has been sent.'})
 
-    # Send the confirmation response back
-    return jsonify({'response': 'Your message has been sent.'})
-
-  # Exception Handler
-  except Exception as e:
-    print({'error': str(e)}, 500)
-    return jsonify({'error': str(e)}), 500
+    # Exception Handler
+    except Exception as e:
+        print({'error': str(e)}, 500)
+        return jsonify({'error': str(e)}), 500
 
 # End Augustus's Code
 if __name__ == "__main__":
