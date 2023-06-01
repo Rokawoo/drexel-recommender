@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drexel Recommender</title>
+    <link rel="icon" type="image/x-icon" href="https://www.cs.drexel.edu/~ays36/CI102/img/DrexelIcon.ico">
+
     <style>
         body {
        background-size: cover;
@@ -47,11 +50,10 @@
                 <img src="https://www.cs.drexel.edu/~ays36/CI102/img/cart.png" draggable="false" alt="cart" style="float: right; margin-right: 20px; margin-left: 60px" width="180px" height="180px">
             </div>
             <div class="col-4">
-                <h1 color="#000066" font-size="150px">
-                    Drexel Shopping Cart
-                </h1>
+                <h1 font-size="150px" style="text-shadow: 4px 2px #ffdc6d; color: #000066;">Shopping Cart</h1>
+
                 <form action="/goBackHome" method="POST">
-                    <button> Home </button>
+                    <button style="font-size: 35px; margin-top: 10px; margin-left: -18px;">Home</button>
                 </form>
             </div>
             <div class="col-3">
@@ -75,14 +77,14 @@
             </div>
         </div>
     </div>
-    <div style="background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/YellowPicnic400x.png'); width:70.4%; height:200px; margin:auto; border:4px ridge #000066;">
+    <div style="background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/YellowPicnic400x.png'); width:905px; height:200px; margin:auto; border:4px ridge #000066; position: relative">
         <div class="row"> <!-- Add buttons for each page -->
             <div class="col-2">
 
             </div>
             <div class="col-3" style="margin-top: 15px">
                 <form action="/goBackRecommender" method="POST">
-                    <button style="font-size: 35px" >Recommender</button>
+                    <button style="font-size: 35px; margin-left: -40px;" >Recommender</button>
                 </form>
             </div>
             <div class="col-1">
@@ -90,7 +92,7 @@
             </div>
             <div class="col-3" style="margin-top: 15px">
                 <form action="/goBackSort" method="POST">
-                    <button style="font-size: 35px;">Price Sorter</button>
+                    <button style="font-size: 35px; margin-left: 40px;">Price Sorter</button>
                 </form>
             </div>
             <div class="col-3">
@@ -104,7 +106,7 @@
         </div>
         <div class="col-3" style="margin-top: 15px">
             <form action="/goBackRandom" method="POST">
-              <button style="font-size: 35px;">Random Product</button>
+              <button style="font-size: 35px; margin-left: -40px;">Random Product</button>
             </form>
         </div>
         <div class="col-1">
@@ -112,7 +114,7 @@
         </div>
         <div class="col-3" style="margin-top: 15px">
              <form action="goBackChat" method="POST">
-              <button style="font-size: 35px;">Chatbot</button>
+              <button style="font-size: 35px; margin-left: 40px;">Chatbot</button>
              </form>
         </div>
         <div class="col-3">
@@ -124,35 +126,37 @@
 <br>
     <div style="max-width: 1000px; margin: auto">
         <div id="Output" style="width:90.4%; height:500px; margin:auto; border:4px ridge #000066; background-image:url('https://www.cs.drexel.edu/~ays36/CI102/img/WhitePicnic400x.png'); margin-top: 25px; min-height: calc(100vh - 50px);">
-            <center style="width: 90.7%; height: 406px; margin-top: -20px">
+            <center style="width: 99.7%; height: 406px; margin-top: -20px">
                 <br>
-            <div style="margin-left: 115px; margin-top: 20px; margin-right: 100px">
-                <table>
-                {% for (productPrice, productName, productImage, productLink) in everything %}
-                <tr>
-                    <td>
-                        {{productName}}
-                    </td>
-                    <td>
-                        {{productPrice}}
-                    </td>
-                    <td>
-                        <a href="{{productLink}}"> Product Link </a>
-                    </td>
-                    <td> <img src="{{productImage}}" width="30px" height="30px"> </td>
-                    <td>
-                        <form action="/removeFromCart" method="POST">
-                            <input type="hidden" value="{{productImage}}" name="productImage">
-                            <input type="hidden" value="{{productName}}" name="productName">
-                            <input type="hidden" value="{{productPrice}}" name="productPrice">
-                            <input type="hidden" value="{{productLink}}" name="productLink">
-                            <input type="submit" value="Remove from Cart">
-                        </form>
+                <div style="margin-left: 115px; margin-top: 20px; margin-right: 100px">
+                    <table>
+                        {% for (productPrice, productName, productImage, productLink) in everything %}
+                        <tr>
+                            <td style="border-bottom: 1px solid #000066;">
+                                {{productName}}
+                            </td>
+                            <td style="border-bottom: 1px solid #000066;">
+                                {{productPrice}}
+                            </td>
+                            <td style="border-bottom: 1px solid #000066;">
+                                <a href="{{productLink}}">Product Link</a>
+                            </td>
+                            <td style="border-bottom: 1px solid #000066;"><img src="{{productImage}}" width="30px" height="30px"></td>
+                            <td>
+                                <form action="/removeFromCart" method="POST">
+                                    <input type="hidden" value="{{productImage}}" name="productImage">
+                                    <input type="hidden" value="{{productName}}" name="productName">
+                                    <input type="hidden" value="{{productPrice}}" name="productPrice">
+                                    <input type="hidden" value="{{productLink}}" name="productLink">
+                                    <input style="background-color: #000066; color: white; margin: 4px 2px;" type="submit" value="Remove from Cart">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </center>
 
-                    </td>
-                </tr>
-                {% endfor %}
-            </div>
         </div>
     </div>
 </body>
