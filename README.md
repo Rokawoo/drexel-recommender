@@ -1,92 +1,50 @@
-# Shopping AI
+Drexel Recommender
+
+Description:
+Our product is a shopping aggregator for the Drexel web store. It has the features of the drexel store, such as price sorting and type searching. It is able to do this due to the database we set up with products from the Drexel store. It works for the user by having many features. We have a recommender, price sorter, randomized product search, and chat bot shopping assistant to help you answer questions. Shopping does not have to be stressful anymore. Our shopping aggregator takes care of the busy work so you can focus on what you want to buy.
 
 
+Installation
+To run the Drexel Chatbot application, follow these steps:
 
-## Getting started
+Install Python on your computer.
+Install the following packages using pip:
+Flask
+Pandas
+spellchecker
+openai
+discord_webhook
+[Additional installation steps if required]
+Usage
+To use the Drexel Chatbot:
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Access the Drexel University bookstore website.
+Look for the chatbot interface, typically located at the bottom right corner of the screen.
+Enter your queries or requests in natural language.
+The chatbot will analyze your input and provide appropriate responses.
+[Optional: Provide specific examples of chatbot usage and expected output]
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Support
+If you need assistance or have any questions regarding the Drexel Chatbot, please reach out to us:
 
-## Add your files
+Visit the contact page on the Drexel University bookstore website.
+Fill in the message box with your query.
+The message will be sent through a private Discord webhook, and the team members will respond as soon as possible.
+Roadmap
+[Optional: Mention future releases or planned improvements for the chatbot]
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Contributing
+We welcome contributions to the Drexel Chatbot project. If you would like to make changes or improvements, please follow these guidelines:
 
-```
-cd existing_repo
-git remote add origin https://gitlab.cci.drexel.edu/fds23/62/team-19/shopping-ai.git
-git branch -M main
-git push -uf origin main
-```
+Fork the repository and clone it to your local machine.
+Set up the development environment and dependencies as mentioned in the Installation section.
+Make your changes and ensure the code quality by running tests or linters.
+Submit a pull request, describing the changes made and their purpose.
+Authors and Acknowledgment
+The Drexel Chatbot project was developed by the [Name of Team/Individuals]. We would like to acknowledge the support and contributions of [Names of Contributors or Acknowledgments].
 
-## Integrate with your tools
+License
+[Specify the license under which the project is distributed]
 
-- [ ] [Set up project integrations](https://gitlab.cci.drexel.edu/fds23/62/team-19/shopping-ai/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Project Status
+Development of the Drexel Chatbot project is ongoing. We are continuously working to enhance its capabilities and provide an improved user experience.
