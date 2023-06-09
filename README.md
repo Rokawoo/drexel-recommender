@@ -14,7 +14,8 @@ Pandas
 spellchecker
 openai
 discord_webhook
-[Additional installation steps if required]
+
+
 Usage
 To use the Drexel Chatbot:
 
@@ -22,7 +23,7 @@ Access the Drexel University bookstore website.
 Look for the chatbot interface, typically located at the bottom right corner of the screen.
 Enter your queries or requests in natural language.
 The chatbot will analyze your input and provide appropriate responses.
-[Optional: Provide specific examples of chatbot usage and expected output]
+
 
 Support
 If you need assistance or have any questions regarding the Drexel Chatbot, please reach out to us:
@@ -30,8 +31,7 @@ If you need assistance or have any questions regarding the Drexel Chatbot, pleas
 Visit the contact page on the Drexel University bookstore website.
 Fill in the message box with your query.
 The message will be sent through a private Discord webhook, and the team members will respond as soon as possible.
-Roadmap
-[Optional: Mention future releases or planned improvements for the chatbot]
+
 
 Contributing
 We welcome contributions to the Drexel Chatbot project. If you would like to make changes or improvements, please follow these guidelines:
@@ -43,8 +43,6 @@ Submit a pull request, describing the changes made and their purpose.
 Authors and Acknowledgment
 The Drexel Chatbot project was developed by the [Name of Team/Individuals]. We would like to acknowledge the support and contributions of [Names of Contributors or Acknowledgments].
 
-License
-[Specify the license under which the project is distributed]
 
 Project Status
-Development of the Drexel Chatbot project is ongoing. We are continuously working to enhance its capabilities and provide an improved user experience.
+Development of the Drexel Chatbot project is finised.
