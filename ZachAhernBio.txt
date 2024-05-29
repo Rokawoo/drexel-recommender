@@ -1,1 +1,0 @@
-Hi my name is Zach Ahern. I am a data science major with a minor in business administration. In my professional career, I hope to work with data and create machine learning models that help solve problems.
