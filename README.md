@@ -8,7 +8,7 @@
 > [!CAUTION]
 > ⭐ Code in this repo is from freshman and will make you violently ill.
 
-**My Contribution:**
+**My Contribution**
 
 Designed and developed a unique web application in a collaborative team effort.
 Our app is an innovative product sorting concept that can be implemented in any
@@ -16,11 +16,11 @@ webstore, leveraging customized sorting algorithms and a personalized AI shoppin
 assistant. My main contributions include the creation and integration of the
 entire frontend UI / UX, product graphics, and AI shopping assistant.
 
-**Demo Video:**
+**Demo Video**
 
 [Demo](https://github.com/Rokawoo/drexel-recommender/assets/129356996/70db1836-9384-41e3-b292-cae489fbf85c)
 
-**Project Media:**
+**Project Media**
 
 ![drec_home](https://github.com/Rokawoo/drexel-recommender/assets/129356996/5ece9537-ea03-4b9b-a1f7-9560fdffbdb7)
 ![drec_mario](https://github.com/Rokawoo/drexel-recommender/assets/129356996/6b8a0588-c7ab-4b73-9784-a2b80f293b94)
